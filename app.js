@@ -11,9 +11,6 @@ app.use(express.static("public"))
 app.get("/", function(req,res){
     res.render("home")
 })
-app.get("/project", function(req,res){
-    res.render("home")
-})
 app.get("/contact-us", function(req,res){
     res.render("contactus")
 })
