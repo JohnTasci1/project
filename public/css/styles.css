@@ -2,7 +2,7 @@
 #topLayer {
     height: 400px;
     width: auto;
-    background-image: url("/images/background.png");
+    background-image: url("public/images/background.png");
 }
 .topLayerText{
     text-align: center;
