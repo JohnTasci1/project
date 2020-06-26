@@ -1,0 +1,102 @@
+<%- include("partials/header") -%>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <h1>Advanced Discounted Selling Profit Calculator</h1>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Selling Price $" id="sellingPrice">
+    <input type="number" class="btn-group" placeholder = "Discount %" id="discount">
+    <input type="number" class="btn-group" placeholder = "Item Cost $" id="itemCost">
+    <input type="number" class="btn-group" placeholder = "Shipping Cost $" id="shippingCost">
+    <input type="number" class="btn-group" placeholder = "Shipping Charge $" id="shippingCharge">
+    <input type="number" class="btn-group" placeholder = "Selling Tax %" id="sellingTax">
+    <p></p>
+    <p>Selling Cost <i>(e.g. Amazon, eBay, Etsy, etc.)</i></p>
+    <input type="number" class="btn-group" placeholder = "Percentage %" id="sellingPercentage">
+    <input type="number" class="btn-group" placeholder = "Fixed $" id="sellingFixed">
+    <p></p>
+    <p>Transaction Cost <i>(e.g. Paypal Fees, Square, Stripe, etc.)</i></p>
+    <input type="number" class="btn-group" placeholder = "Percentage %" id="transactionPercentage">
+    <input type="number" class="btn-group" placeholder = "Fixed $" id="transactionFixed">
+    <button class = "btn btn-primary calculate-group" onClick = "sellingProfit()">Calculate</button>
+    <br/>
+    <button id = "error" type = "button" class = "btn btn-light border border-dark d-none"> Answer </button>
+    </center>
+    </div>
+</div>
+<div style = "width: auto">
+    <center>
+        <!-- First Table -->
+<table class ="w-auto">
+    <thead class= "table-dark">
+        <tr style = "text-align: center">
+            <th scope="col">Revenue Per Sale</th>
+            <th scope="col">Cost</th>
+            <th scope="col">Selling Cost</th>
+            <th scope="col">Transaction Cost</th>
+            <th scope="col">Profit Per Sale</th>
+        </tr>
+    </thead>
+    <tr style = "text-align: right">
+        <td class = "revenue"></td>
+        <td class = "cost"></td>
+        <td class = "selling"></td> 
+        <td class = "transactionCost"></td> 
+        <td class = "profit"></td> 
+    </tr>
+</table>
+</center>
+</div>
+<div>
+<script>
+    function sellingProfit(){
+    //Selling
+    var sellingPrice = $("#sellingPrice").val()
+    var discount = $("#discount").val()
+    var itemCost = $("#itemCost").val()
+    var shippingCost = $("#shippingCost").val()
+    var shippingCharge = $("#shippingCharge").val()
+    var sellingTax = $("#sellingTax").val()
+    //Selling Cost
+    var sellingPercentage = $("#sellingPercentage").val()
+    var sellingFixed = $("#sellingFixed").val()
+    //Transaction Cost
+    var transactionPercentage = $("#transactionPercentage").val()
+    var transactionFixed = $("#transactionFixed").val()
+
+    var discountPrice = sellingPrice - (discount / 100 * sellingPrice)
+    var topTotal = Number(discountPrice - itemCost - shippingCost) + Number(shippingCharge) + Number(sellingTax / 100 * discountPrice)
+    var sellingCost = Number(sellingPercentage / 100 * discountPrice) + Number(sellingFixed)
+    var transactionCost = Number(transactionPercentage / 100 * discountPrice) + Number(transactionFixed)
+    var profit = topTotal - sellingCost - transactionCost
+    var cost = Number(itemCost) + Number(shippingCost)
+    var revenue = Number(discountPrice) + Number(sellingTax / 100 * discountPrice) + Number(shippingCharge)
+
+    $(".revenue").html("$" + Math.round(revenue * 100) / 100)
+    $(".cost").html("$" + Math.round(cost * 100)/100)
+    $(".selling").html("$" + Math.round(sellingCost * 100) / 100)
+    $(".transactionCost").html("$" + Math.round(transactionCost * 100) / 100)
+    $(".profit").html("$" + Math.round(profit * 100) / 100)
+
+if (sellingPrice <= 0 || discount < 0 || itemCost <= 0 || shippingCost < 0 || shippingCharge < 0 || sellingTax < 0 || sellingPercentage < 0 || sellingFixed < 0 || transactionPercentage < 0 || transactionFixed < 0){
+    $("#error").html("Values must be positive")
+    $("#error").removeClass("d-none")
+    $("table").removeClass("d-none")
+    $("td").html("-")
+} else if (transactionPercentage >= 100 || sellingPercentage >= 100 || sellingTax >= 100 || discount >= 100){
+    $("#error").html("Percent values be between 0-100")
+    $("#error").removeClass("d-none")
+    $("table").removeClass("d-none")
+    $("td").html("-")
+} else if (profit <= 0){
+    $("#error").html("Your goal is to make a profit.")
+    $("#error").removeClass("d-none")
+    $("table").removeClass("d-none")
+} else {
+    $("#error").addClass("d-none")
+    $("table").removeClass("d-none")
+}
+}
+</script>
+</div>
+<%- include("partials/footer") -%>

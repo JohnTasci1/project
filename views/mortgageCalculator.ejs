@@ -1,0 +1,79 @@
+<%- include("partials/header") -%>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <h1>Mortgage Calculator</h1>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Home Price" id="homePrice">
+    <input type="number" class="btn-group" placeholder = "Down Payment" id="downPayment">
+    <input type="number" class="btn-group" placeholder = "Loan Terms Years" id="loanYears">
+    <input type="number" class="btn-group" placeholder = "Interest Rate" id="interestRate">
+    <input type="number" class="btn-group" placeholder = "Property Tax" id="propertyTax">
+    <input type="number" class="btn-group" placeholder = "Yearly insurance" id="insurance">
+    <button class = "btn btn-primary calculate-group" onClick = "mortgage()" id = "simpleLoanCalculate">Calculate</button>
+    <br/>
+    <button id = "error" type = "button" class = "btn btn-light border border-dark d-none"></button>
+    </center>
+    </div>
+</div>
+<div class ="w-auto">
+   <center>
+       <!-- First Table -->
+<table class = "table table-bordered d-none">
+   <thead class= "table-dark">
+       <tr style = "text-align: center">
+           <th scope="col">Principal Mortgage</th>
+           <th scope="col">Mortgage After Tax & Insurance</th>
+           <th scope="col">Total Loan Paid</th>
+       </tr>
+   </thead>
+   <tr style = "text-align: right">
+       <td class = "pMortgage"></td>
+       <td class = "monthly"></td>
+       <td class = "total"></td> 
+   </tr>
+</table>
+</center>
+</div>
+<div>
+<script>
+    function mortgage(){
+     var homePrice = $("#homePrice").val()
+     var downPayment = $("#downPayment").val()
+     var interestRate = $("#interestRate").val()
+     var loanYears = $("#loanYears").val()
+     var propertyTax = $("#propertyTax").val()
+     var insurance = $("#insurance").val()    
+
+var loanMonths = loanYears * 12
+var loanAmount = homePrice - downPayment
+var i = interestRate * 0.01 / 12
+var totalMortgage = (loanAmount * i * Math.pow(1 + i, loanMonths)) / (Math.pow(1 + i, loanMonths) - 1) + propertyTax / 12 + insurance / 12
+var principalMortgage = (loanAmount * i * Math.pow(1 + i, loanMonths)) / (Math.pow(1 + i, loanMonths) - 1)
+var monthlyPrincipalResult = principalMortgage
+var monthlyResult = totalMortgage
+var totalPayment = monthlyResult * loanYears * 12
+
+var condition = homePrice - downPayment
+
+   $(".pMortgage").html("$" + Math.round(monthlyPrincipalResult * 100) / 100)
+   $(".monthly").html("$" + Math.round(monthlyResult * 100) / 100)
+   $(".total").html("$" + Math.round(totalPayment * 100) / 100)
+
+ if (condition < 0){
+   $("#error").removeClass("d-none")
+    $("#error").html("Down payment can't be more than purchase price")
+ }  
+ if (homePrice <= 0|| interestRate <= 0|| loanYears <= 0 || downPayment < 0 || insurance < 0 || propertyTax < 0){
+    $("#error").removeClass("d-none")
+    $("#error").html("All values must be positive")
+    $("table").removeClass("d-none")
+    $("td").html("-")
+ } else { 
+   $("table").removeClass("d-none")
+   $("#error").addClass("d-none")
+ }
+}
+</script>
+</div>
+<%- include("partials/footer") -%>

@@ -1,0 +1,68 @@
+<%- include("partials/header") -%>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <h1>Simple Loan Calculator</h1>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Loan Amount $" id="loanAmount">
+    <input type="number" class="btn-group" placeholder = "Interest Rate %" id="interestRate">
+    <input type="number" class="btn-group" placeholder = "Number Of Months" id="numberOfMonths">
+    <button class = "btn btn-primary calculate-group" onClick = "simpleLoan()" id = "simpleLoanCalculate">Calculate</button>
+    <br/>
+    <button id = "error" type = "button" class = "btn btn-light border border-dark d-none"></button>
+    </center>
+    </div>
+</div>
+<div class ="w-auto">
+    <center>
+        <!-- First Table -->
+<table class = "table table-bordered d-none">
+    <thead class= "table-dark">
+        <tr style = "text-align: center">
+            <th scope="col">Monthly Payment</th>
+            <th scope="col">Principal Loan</th>
+            <th scope="col">Paid Interest</th>
+            <th scope="col">Total Loan Paid</th>
+        </tr>
+    </thead>
+    <tr style = "text-align: right">
+        <td class = "monthly"></td>
+        <td class = "principal"></td>
+        <td class = "interest"></td> 
+        <td class = "total"></td> 
+    </tr>
+</table>
+</center>
+</div>
+
+<div>
+<script>
+ function simpleLoan(){
+    var loanAmount = $("#loanAmount").val()
+    var interestRate = $("#interestRate").val()
+    var numberOfMonths = $("#numberOfMonths").val()
+
+    var i = interestRate * 0.01 / 12
+    var calculate = (loanAmount * i * Math.pow(1 + i, numberOfMonths)) / (Math.pow(1 + i, numberOfMonths) - 1)
+    var principal = loanAmount
+    var interestPayed = (calculate * numberOfMonths) - loanAmount
+    var total = Number(principal) + Number(interestPayed)
+
+    $(".monthly").html("$" + Math.round(calculate * 100) / 100)
+    $(".principal").html("$" + Math.round(principal * 100) / 100)
+    $(".interest").html("$" + Math.round(interestPayed * 100) / 100)
+    $(".total").html("$" + Math.round(total * 100) / 100)
+
+    if (loanAmount <= 0 || interestRate <= 0 || numberOfMonths <= 0){
+        $("td").html("-")
+        $("#error").html("Values must be positive!")
+        $("#error").removeClass("d-none")
+        $("table").removeClass("d-none")
+    } else { 
+        $("#error").addClass("d-none")
+        $("table").removeClass("d-none")
+    }
+ }
+</script>
+</div>
+<%- include("partials/footer") -%>

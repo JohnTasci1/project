@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Copyright 2017 mathsisfun.com -->
+<svg xmlns="http://www.w3.org/2000/svg" width="163.8" height="163.8" version="1.1" style="stroke-width:1pt; font-family:Georgia;">
+<defs>
+	<marker id="id2" style="overflow:visible;" orient="auto">
+		<path transform="scale(0.4) rotate(180) translate(10,0)" style="fill:#005c94; stroke:#005c94;" d="M 0,0 L 5,-5 L -12.5,0 L 5,5 L 0,0 z "/>
+	</marker>
+	<marker id="id1" style="overflow:visible;" orient="auto">
+		<path transform="scale(0.4) translate(10,0)" style="fill:#005c94; stroke:#005c94;" d="M 0,0 L 5,-5 L -12.5,0 L 5,5 L 0,0 z "/>
+	</marker>
+	<rect x="0" y="-0.5" width="1" height="2" style="fill:black; stroke-width:1;"/>
+	<marker id="id4" style="overflow:visible;" orient="auto">
+		<path transform="matrix(-0.4,0,0,-0.4,-4,0)" style="stroke:black;" d="M 0,0 5,-5 -12.5,0 5,5 Z"/>
+	</marker>
+	<marker id="id3" style="overflow:visible;" orient="auto">
+		<path transform="matrix(0.4,0,0,0.4,4,0)" style="stroke:black;" d="M 0,0 5,-5 -12.5,0 5,5 Z"/>
+	</marker>
+</defs>
+<path style="color:black; overflow:visible; fill:#19aeff; stroke:black; stroke-width:0.76px;" d="M 81.9 0.4 A 81.5 81.5 0 0 0 0.4 81.9 A 81.5 81.5 0 0 0 81.9 163.4 A 81.5 81.5 0 0 0 163.4 81.9 A 81.5 81.5 0 0 0 81.9 0.4 z M 81.9 28.2 A 53.7 53.7 0 0 1 135.6 81.9 A 53.7 53.7 0 0 1 81.9 135.6 A 53.7 53.7 0 0 1 28.2 81.9 A 53.7 53.7 0 0 1 81.9 28.2 z "/>
+<text x="91.6" y="62.9" style="font-size:28px; color:black; overflow:visible; fill:#005c94; stroke-width:0.5px;">r</text>
+<text x="98.7" y="120.1" style="font-size:28px; color:black; overflow:visible; fill:black; stroke-width:0.5px;">R</text>
+<circle cx="81.9" cy="81.9" r="2.62235" style="color:black; overflow:visible; fill:#ff9900; stroke-width:0.02px;"/>
+<path style="marker-start:url(#id1); marker-end:url(#id2); fill:none; stroke:#005c94; stroke-width:1.49;" d="m 83.6,80.3 39,-29.5"/>
+<path style="marker-start:url(#id3); marker-end:url(#id4); fill:none; stroke:black; stroke-width:1.51;" d="m 84.3,83.5 69.8,30.7"/>
+<text x="36.1" y="82.9" style="font-size:14.7px; font-style:italic; color:black; overflow:visible; fill:#ff9900; stroke-width:0.5px;">Center</text>
+</svg>

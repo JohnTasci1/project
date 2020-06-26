@@ -1,0 +1,46 @@
+<%- include("partials/header") -%>
+<div id = "topLayer" class = "container-fluid">
+    <h1 class="text-white topLayerText" >Get Results Quicker With The Best Calculators</h1>
+   <br>
+    <p  class="text-white topLayerText" >Calculate for free</p>
+    <nav class="navbar navbar-light">
+        <form class="form-inline mx-auto searchBar">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-secondary my-2 my-sm-0 bg-light searchButton" type="submit">Search</button>
+          </form>
+      </nav>
+</div>
+<div>
+    <h3 class = "numberOne">#1 Rated Calculator Worldwide</h3>
+</div>
+
+<br><br><br>
+<!-- Grouped Cards -->
+<div class="card-group allCards">
+    <div onclick="location.href='/math-calculators';" class="card">
+      <img src="images/calculator.png" class="card-img-top mx-auto" alt="calculator">
+      <div class="card-body">
+        <h4 class="card-title">Math</h4>
+        <p class="card-text">Need help with homework? We got you. Our calculators will help you complete homework in ease.</p>
+        <a class="btn btn-primary" href="/math-calculators" role="button">Math</a>
+    </div>
+    </div>
+    <div onclick="location.href='/finance-calculators';" class="card">
+      <img src="images/financecardimage.png" class="card-img-top mx-auto" alt="finance">
+      <div class="card-body">
+        <h4 class="card-title">Finance</h4>
+        <p class="card-text">Humans make mistakes, calculators don't. Track your finances to see if you're on the right track.</p>
+        <a class="btn btn-primary" href="/finance-calculators" role="button">Finance</a>
+    </div>
+    </div>
+    <div onclick="location.href='/education-calculators';" class="card">
+      <img src="images/graduationhat.png" class="card-img-top mx-auto" alt="...">
+      <div class="card-body">
+        <h4 class="card-title">Education</h4>
+        <p class="card-text">What's my grade? What grade do I need? What's my GPA? Don't worry we got you covered.</p>
+        <a class="btn btn-primary" href="/education-calculators" role="button">Education</a>
+    </div>
+    </div>
+  </div>
+
+<%- include("partials/footer") -%>

@@ -1,0 +1,62 @@
+<%- include("partials/header") -%>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <h1>Sales Calculator</h1>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Cost $" id="cost">
+    <input type="number" class="btn-group" placeholder = "Gross Margin %" id="grossMargin">
+    
+    <button class = "btn btn-primary calculate-group" onClick = "salesCalculator()" id = "sales">Calculate</button>
+    <br/>
+    <button id = "error" type = "button" class = "btn btn-light border border-dark d-none"> Answer </button>
+    </center>
+    </div>
+</div>
+<div class ="w-auto">
+    <center>
+        <!-- First Table -->
+<table class = "table table-bordered d-none">
+    <thead class= "table-dark">
+        <tr style = "text-align: center">
+            <th scope="col">Revenue/Price</th>
+            <th scope="col">Markup</th>
+            <th scope="col">Gross Profit</th>
+        </tr>
+    </thead>
+    <tr style = "text-align: right">
+        <td class = "revenue"></td>
+        <td class = "markup"></td> 
+        <td class = "gProfit"></td> 
+    </tr>
+</table>
+</center>
+</div>
+<div>
+<script>
+    function salesCalculator(){
+        var gMargin = $("#grossMargin").val() * 0.01
+        var revenue = $("#cost").val() / (1 - gMargin)
+        var grossProfit = revenue - $("#cost").val()
+        var markup = grossProfit / $("#cost").val() * 100
+
+        $(".revenue").html("$" + Math.round(revenue * 100) / 100)
+        $(".markup").html(Math.round(markup * 100) / 100 + "%")
+        $(".gProfit").html("$" + Math.round(grossProfit * 100) / 100)
+    
+    if(!isNaN(grossProfit, markup, grossMargin)){
+        $("#saleseTotal").html("Cost: $" + Math.round($("#cost").val() * 100) / 100 + "<br/>Gross Margin: " + Math.round($("#grossMargin").val() * 100) / 100 + "%" +"<br/>Markup: " + Math.round(markup * 100) / 100 + "%" + "</br>Revenue/Price: $" + Math.round(revenue * 100) / 100  + "<br/> Gross Profit: $" + Math.round(grossProfit * 100) / 100)
+    }
+    if($("#cost").val() <= 0 || $("#grossMargin").val() <= 0){
+        $("table").removeClass("d-none")
+        $("td").html("-")
+        $("#error").removeClass("d-none")
+        $("#error").html("All values must be positive")
+    } else {
+        $("table").removeClass("d-none")
+        $("#error").addClass("d-none")
+    }
+}
+</script>
+</div>
+<%- include("partials/footer") -%>

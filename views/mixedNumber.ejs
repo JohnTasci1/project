@@ -1,0 +1,177 @@
+<%- include("partials/header") -%>
+<div style = "padding: 3%">
+    <center>
+    <h1>Mixed Number Calculators</h1>
+    <p>Several calculators to use!</p>
+    <br/>
+    <h3>Mixed number to Whole Number</h3>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Whole Number"id="wholeNumber">
+    <input type="number" class="btn-group" placeholder = "numerator"id="numerator">
+    <input type="number" class="btn-group" placeholder = "denominator"id="denominator">
+    <button class = "btn btn-primary calculate-group" onClick = "mixedNumber()">Calculate</button>
+    <br/>
+    <button id = "mixedNumbersAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+</div>
+<div style = "padding: 3%">
+    <center>
+    <h3>Add Mixed Numbers</h3>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Whole Number"id="addWholeNumber">
+    <input type="number" class="btn-group" placeholder = "numerator"id="addNumerator">
+    <input type="number" class="btn-group" placeholder = "denominator"id="addDenominator">
+    <br/>
+    <p>+</p>
+    <input type="number" class="btn-group" placeholder = "Whole Number"id="addWholeNumber1">
+    <input type="number" class="btn-group" placeholder = "numerator"id="addNumerator1">
+    <input type="number" class="btn-group" placeholder = "denominator"id="addDenominator1">
+    <br/>
+    <button class = "btn btn-primary calculate-group" onClick = "addMixedNumbers()">Calculate</button>
+    <br/>
+    <button id = "addMixedNumbersAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+</div>
+<div style = "padding: 3%">
+    <center>
+    <h3>Subtract Mixed Numbers</h3>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Whole Number" id="subtractWholeNumber">
+    <input type="number" class="btn-group" placeholder = "numerator" id="subtractNumerator">
+    <input type="number" class="btn-group" placeholder = "denominator" id="subtractDenominator">
+    <br/>
+    <p>-</p>
+    <input type="number" class="btn-group" placeholder = "Whole Number" id="subtractWholeNumber1">
+    <input type="number" class="btn-group" placeholder = "numerator" id="subtractNumerator1">
+    <input type="number" class="btn-group" placeholder = "denominator" id="subtractDenominator1">
+    <br/>
+    <button class = "btn btn-primary calculate-group" onClick = "subtractMixedNumbers()">Calculate</button>
+    <br/>
+    <button id = "subtractMixedNumbersAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+</div>
+<div style = "padding: 3%">
+    <center>
+    <h3>Multiply Mixed Numbers</h3>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Whole Number" id="multiplyWholeNumber">
+    <input type="number" class="btn-group" placeholder = "numerator" id="multiplyNumerator">
+    <input type="number" class="btn-group" placeholder = "denominator" id="multiplyDenominator">
+    <br/>
+    <p>x</p>
+    <input type="number" class="btn-group" placeholder = "Whole Number" id="multiplyWholeNumber1">
+    <input type="number" class="btn-group" placeholder = "numerator" id="multiplyNumerator1">
+    <input type="number" class="btn-group" placeholder = "denominator" id="multiplyDenominator1">
+    <br/>
+    <button class = "btn btn-primary calculate-group" onClick = "multiplyMixedNumbers()">Calculate</button>
+    <br/>
+    <button id = "multiplyMixedNumbersAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+</div>
+<div style = "padding: 3%">
+    <center>
+    <h3>Divide Mixed Numbers</h3>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Whole Number" id="divideWholeNumber">
+    <input type="number" class="btn-group" placeholder = "numerator" id="divideNumerator">
+    <input type="number" class="btn-group" placeholder = "denominator" id="divideDenominator">
+    <br/>
+    <p>÷</p>
+    <input type="number" class="btn-group" placeholder = "Whole Number" id="divideWholeNumber1">
+    <input type="number" class="btn-group" placeholder = "numerator" id="divideNumerator1">
+    <input type="number" class="btn-group" placeholder = "denominator" id="divideDenominator1">
+    <br/>
+    <button class = "btn btn-primary calculate-group" onClick = "divideMixedNumbers()">Calculate</button>
+    <br/>
+    <button id = "divideMixedNumbersAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+</div>
+<div>
+<script>
+    function mixedNumber(){
+        var mixedNumberResult = parseFloat(Number($("#wholeNumber").val()) + ($("#numerator").val() / $("#denominator").val()))
+        if(!isNaN(mixedNumberResult)){
+            $("#mixedNumbersAnswer").html("The whole number is " + mixedNumberResult)
+        }
+        if ($("#denominator").val() == 0){
+            $("#mixedNumbersAnswer").html("Denominator can't be zero")
+        }
+    }
+    function addMixedNumbers(){
+        var addWholeNumber = $("#addWholeNumber").val()
+        var addNumerator = $("#addNumerator").val()
+        var addDenominator = $("#addDenominator").val()
+        var addWholeNumber1 = $("#addWholeNumber1").val()
+        var addNumerator1 = $("#addNumerator1").val()
+        var addDenominator1 = $("#addDenominator1").val()
+
+        var addMixedNumberResult1 = Number(addWholeNumber) + (addNumerator / addDenominator)
+        var addMixedNumberResult2 = Number(addWholeNumber1) + (addNumerator1 / addDenominator1)
+        var addMixedNumbersTotal = Number(addMixedNumberResult1) + Number(addMixedNumberResult2)
+
+        if(!isNaN(addMixedNumbersTotal)){
+            $("#addMixedNumbersAnswer").html("The whole number is " + addMixedNumbersTotal);
+        }
+        if (addDenominator == 0 || addDenominator1 == 0){
+            $("#addMixedNumbersAnswer").html("Denominator can't be zero")
+        }
+    }
+    function subtractMixedNumbers(){
+        var subtractWholeNumber = $("#subtractWholeNumber").val()
+        var subtractNumerator = $("#subtractNumerator").val()
+        var subtractDenominator = $("#subtractDenominator").val()
+        var subtractWholeNumber1 = $("#subtractWholeNumber1").val()
+        var subtractNumerator1 = $("#subtractNumerator1").val()
+        var subtractDenominator1 = $("#subtractDenominator1").val()
+
+        var subtractMixedNumberResult1 = Number(subtractWholeNumber) + (subtractNumerator / subtractDenominator)
+        var subtractMixedNumberResult2 = Number(subtractWholeNumber1) + (subtractNumerator1 / subtractDenominator1)
+        var subtractMixedNumbersTotal = Number(subtractMixedNumberResult1) - Number(subtractMixedNumberResult2)
+
+        if(!isNaN(subtractMixedNumbersTotal)){
+            $("#subtractMixedNumbersAnswer").html("The whole number is " + subtractMixedNumbersTotal);
+        }
+        if (subtractDenominator == 0 || subtractDenominator1 == 0){
+            $("#subtractMixedNumbersAnswer").html("Denominator can't be zero");
+        }
+    }
+    function multiplyMixedNumbers(){
+        var multiplyWholeNumber = $("#multiplyWholeNumber").val()
+        var multiplyNumerator = $("#multiplyNumerator").val()
+        var multiplyDenominator = $("#multiplyDenominator").val()
+        var multiplyWholeNumber1 = $("#multiplyWholeNumber1").val()
+        var multiplyNumerator1 = $("#multiplyNumerator1").val()
+        var multiplyDenominator1 = $("#multiplyDenominator1").val()
+
+        var multiplyMixedNumberResult1 = Number(multiplyWholeNumber) + (multiplyNumerator / multiplyDenominator)
+        var multiplyMixedNumberResult2 = Number(multiplyWholeNumber1) + (multiplyNumerator1 / multiplyDenominator1)
+        var multiplyMixedNumbersTotal = Number(multiplyMixedNumberResult1) * Number(multiplyMixedNumberResult2)
+
+        if(!isNaN(multiplyMixedNumbersTotal)){
+            $("#multiplyMixedNumbersAnswer").html("The whole number is " + multiplyMixedNumbersTotal)
+        }
+        if (multiplyDenominator == 0 || multiplyDenominator1 == 0){
+            $("#multiplyMixedNumbersAnswer").html("Denominator can't be zero")
+        }
+    }
+    function divideMixedNumbers(){
+        var divideWholeNumber = $("#divideWholeNumber").val()
+        var divideNumerator = $("#divideNumerator").val()
+        var divideDenominator = $("#divideDenominator").val()
+        var divideWholeNumber1 = $("#divideWholeNumber1").val()
+        var divideNumerator1 = $("#divideNumerator1").val()
+        var divideDenominator1 = $("#divideDenominator1").val()
+
+        var divideMixedNumberResult1 = Number(divideWholeNumber) + (divideNumerator / divideDenominator)
+        var divideMixedNumberResult2 = Number(divideWholeNumber1) + (divideNumerator1 / divideDenominator1)
+        var divideMixedNumbersTotal = Number(divideMixedNumberResult1) / Number(divideMixedNumberResult2)
+        if(!isNaN(divideMixedNumbersTotal)){
+            $("#divideMixedNumbersAnswer").html("The whole number is " + divideMixedNumbersTotal)
+        }
+        if (divideDenominator == 0 || divideDenominator1 == 0){
+            $("#divideMixedNumbersAnswer").html("Denominator can't be zero")
+        }
+    }
+</script>
+</div>
+<%- include("partials/footer") -%>

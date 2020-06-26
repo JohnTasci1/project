@@ -1,0 +1,73 @@
+<%- include("partials/header") -%>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <h1>2020 Paypal Fee Calculator</h1>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Sold Price $" id="soldPrice">
+    <input type="number" class="btn-group" placeholder = "Item Cost $" id="itemCost">
+    <input type="number" class="btn-group" placeholder = "Shipping Cost $" id="shippingCost">
+    <input type="number" class="btn-group" placeholder = "Shipping Charge $" id="shippingCharge">
+    <input type="number" class="btn-group" placeholder = "Selling Tax %" id="sellingTax">
+    <button class = "btn btn-primary calculate-group" onClick = "paypalFee()">Calculate</button>
+    <br/>
+    <button id = "error" type = "button" class = "btn btn-light border border-dark d-none"> Answer </button>
+    </center>
+    </div>
+</div>
+<div class ="w-auto">
+    <center>
+        <!-- First Table -->
+<table class = "table table-bordered d-none">
+    <thead class= "table-dark">
+        <tr style = "text-align: center">
+            <th scope="col">PayPal Fee</th>
+            <th scope="col">Profit</th>
+        </tr>
+    </thead>
+    <tr style = "text-align: right">
+        <td style = "width: 50%" class = "paypalFee"></td>
+        <td style = "width: 50%" class = "profit"></td> 
+    </tr>
+</table>
+</center>
+</div>
+<div>
+    <script>
+        function paypalFee(){
+            var soldPrice = $("#soldPrice").val()
+            var itemCost = $("#itemCost").val()
+            var shippingCost = $("#shippingCost").val()
+            var shippingCharge = $("#shippingCharge").val()
+            var sellingTax = $("#sellingTax").val()
+
+           var tax = (Number(soldPrice) + Number(shippingCharge)) * ((sellingTax / 100))
+           var paypalCalc = (Number(soldPrice) + Number(shippingCharge)) * 0.029 + 0.30
+           var profit = Number(soldPrice)-Number(itemCost)-Number(shippingCost)+Number(shippingCharge)+Number(tax)-Number(paypalCalc)
+
+           $(".profit").html("$" + Math.round(profit * 100) / 100)
+           $(".paypalFee").html("$" + Math.round(paypalCalc * 100) / 100)
+
+    if (soldPrice <= 0 || itemCost <= 0 || shippingCost < 0 || shippingCharge < 0 || sellingTax < 0){
+        $("table").removeClass("d-none")
+        $("td").html("-")
+        $("#error").removeClass("d-none")
+        $("#error").html("Values can't be negative")
+    } else if(sellingTax >=100 ){
+        $("table").removeClass("d-none")
+        $("td").html("-")
+        $("#error").removeClass("d-none")
+        $("#error").html("Percent values must be between 0-100")
+    } else if (profit < 0){
+        $("table").removeClass("d-none")
+        $("#error").removeClass("d-none")
+        $("#error").html("Your goal is to make a profit")
+    } else {
+        $("table").removeClass("d-none")
+        $("#error").addClass("d-none")
+    }
+        }
+    </script>
+</div>
+
+<%- include("partials/footer") -%>

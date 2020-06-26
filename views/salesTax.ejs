@@ -1,0 +1,56 @@
+<%- include("partials/header") -%>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <h1>Sales Tax Calculator</h1>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Net Price: $" id="netPrice">
+    <input type="number" class="btn-group" placeholder = "Sales Tax: %" id="salesTax">
+    <button class = "btn btn-primary calculate-group" onClick = "salesTax()" id = "simpleInterestCalculator">Calculate</button>
+    <br/>
+    <button id = "error" type = "button" class = "btn btn-light border border-dark d-none"> Answer </button>
+    </center>
+    </div>
+</div>
+<div class ="w-auto">
+    <center>
+        <!-- First Table -->
+<table class = "table table-bordered d-none">
+    <thead class= "table-dark">
+        <tr style = "text-align: center">
+            <th scope="col">Sales Tax</th>
+            <th scope="col">Total Price</th>
+        </tr>
+    </thead>
+    <tr style = "text-align: right">
+        <td class = "tax"></td>
+        <td class = "total"></td> 
+    </tr>
+</table>
+</center>
+</div>
+<div>
+<script>
+    function salesTax(){
+        var netPrice = $("#netPrice").val()
+        var salesTax = $("#salesTax").val()
+
+        var tax = netPrice * (salesTax / 100)
+        var totalPrice = Number(netPrice) + Number(tax)
+
+        $(".tax").html("$" + Math.round(tax * 100) / 100)
+        $(".total").html("$" + Math.round(totalPrice * 100) / 100)
+
+    if (netPrice <= 0 || salesTax <= 0){
+        $("table").removeClass("d-none")
+        $("td").html("-")
+        $("#error").removeClass("d-none")
+        $("#error").html("All values must be positive")
+    } else {
+        $("table").removeClass("d-none")
+        $("#error").addClass("d-none")
+    }
+}
+</script>
+</div>
+<%- include("partials/footer") -%>

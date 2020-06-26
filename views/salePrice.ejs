@@ -1,0 +1,74 @@
+<%- include("partials/header") -%>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <h1>Discount Price Calculator</h1>
+    <br/>
+    <br/>
+    <h4>Percentage Discount</h4>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Price $" id="price">
+    <input type="number" class="btn-group" placeholder = "Percent Off %" id="percentOff">
+    
+    <button class = "btn btn-primary calculate-group" onClick = "percentDiscount()">Calculate</button>
+    <br/>
+    <button id = "percentDiscountTotal" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+    </div>
+</div>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <br/>
+    <h4>Multi Item Discount Calculator</h4>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Number Ex: 6" id="number1">
+    <br/>
+    <p>for</p>
+    <input type="number" class="btn-group" placeholder = "Number Ex: 1" id="number2">
+    <br/>
+    <p>at</p>
+    <input type="number" class="btn-group" placeholder = "Price $" id="price2">
+    
+    <button class = "btn btn-primary calculate-group" onClick = "multiItemDiscount()">Calculate</button>
+    <br/>
+    <button id = "multiDiscountTotal" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    <br/>
+    </center>
+    </div>
+</div>
+<div>
+<script>
+function percentDiscount(){
+    var percentOff = $("#percentOff").val()
+    var price = $("#price").val()
+
+    var total = price - (price * (percentOff / 100))
+    
+if(!isNaN(total)){
+      $("#percentDiscountTotal").html("Final Price for Each: $" + Math.round(total * 100) / 100)
+}
+  if (percentOff <= 0 || price <= 0){
+      $("#percentDiscountTotal").html("All values must be positive")
+} else if(percentOff > 100){
+      $("#percentDiscountTotal").html("Percent off can't be over 100%")
+  }
+}
+function multiItemDiscount(){
+    var number1 = $("#number1").val()
+    var number2 = $("#number2").val()
+    var price2 = $("#price2").val()
+
+    var multiTotal = (number2 * price2) / number1
+  if(!isNaN(multiTotal)){
+        $("#multiDiscountTotal").html("Final Price for Each: $" + Math.round(multiTotal * 100) / 100)
+  }
+  if (number1 <= 0 || number2 <= 0 || price2 <= 0){
+      $("#multiDiscountTotal").html("All values must be positive")
+  } else if(number1 - number2 <= 0){
+    $("#multiDiscountTotal").html("Second number must be less than the first. Example: 6 for 4")
+  }
+}
+</script>
+</div>
+<%- include("partials/footer") -%>

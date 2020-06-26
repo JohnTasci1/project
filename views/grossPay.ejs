@@ -1,0 +1,127 @@
+<%- include("partials/header") -%>
+<div style = "padding: 3%;">
+    <div>
+    <center>
+    <h1>Gross Pay Calculator</h1>
+    <br/>
+    <h2 class ="h4">Straight Time</h2>
+    <input type="number" class="btn-group" placeholder = "Hours:" id="hours1">
+    <input type="number" class="btn-group" placeholder = "Rate: $" id="rate1">
+    <p></p>
+    <h2 class ="h4">Overtime (OT)</h2>
+    <p></p>
+    <input type="number" class="btn-group" placeholder = "Hours:" id="hours2">
+    <input type="number" class="btn-group" placeholder = "OT Rate: $" id="rate2">
+    <p></p>
+    <h2 class ="h4">Double Time (DT)</h2>
+    <p></p>
+    <input type="number" class="btn-group" placeholder = "Hours:" id="hours3">
+    <input type="number" class="btn-group" placeholder = "DT Rate: $" id="rate3">
+    <button class = "btn btn-primary calculate-group" onClick = "grossPay()">Calculate</button>
+    </br>
+    <button id = "error" type = "button" class = "btn btn-light border border-dark d-none"></button>
+    </div>
+</center>
+</div>
+<div class = "d-none w-auto">
+    <center>
+        <!-- First Table -->
+<table class = "table table-bordered">
+    <thead class= "table-dark">
+        <tr style = "text-align: center">
+            <th scope="col">Regular Hours</th>
+            <th scope="col">Over Time Hours</th>
+            <th scope="col">Double Time Hours</th>
+            <th scope="col">Total Hours</th>
+        </tr>
+    </thead>
+    <tr style = "text-align: right">
+        <td class = "hour1"></td>
+        <td class = "hour2"></td> 
+        <td class = "hour3"></td>
+        <td class = "totalHours"></td>
+    </tr>
+</table>
+</br>
+<!-- Second Table -->
+<table class = "table table-bordered">
+<thead class= "table-dark">
+    <tr style = "text-align: center">
+        <th scope="col">Regular Pay</th>
+        <th scope="col">Over Time Pay</th>
+        <th scope="col">Double Time Pay</th>
+        <th scope="col">Total Pay</th>
+    </tr>
+</thead>
+<tr style = "text-align: right">
+    <td id = "td1"></td>
+    <td id = "td2"></td> 
+    <td id = "td3"></td>
+    <td id = "td4"></td>
+</tr>
+</table>
+</br>
+<!-- Third Table -->
+<table class = "table table-bordered single">
+<thead class= "table-dark">
+    <tr style = "text-align: center">
+        <th scope="col">Average Pay Per Hour</th>
+    </tr>
+</thead>
+<tr style = "text-align: right">
+    <td class = "averagePay"></td>
+    </tr>
+</table>
+</center>
+</div>
+<div>
+<script>
+    function grossPay(){
+        var hours1 = $("#hours1").val()
+        var rate1 = $("#rate1").val()
+        var hours2 = $("#hours2").val()
+        var rate2 = $("#rate2").val()
+        var hours3 = $("#hours3").val()
+        var rate3 = $("#rate3").val()
+        var error = $("#error").val()
+
+        var straightTime = hours1 * rate1
+        var overTime = hours2 * rate2
+        var doubleTime = hours3 * rate3
+        var totalHours = Number(hours1) + Number(hours2) + Number(hours3)
+        var total = Number(straightTime) + Number(overTime) + Number(doubleTime)
+        var hourlyPay = total / totalHours
+        //Hour Table
+        $("#td1").html("$" + Math.round(straightTime * 100) / 100)
+        $("#td2").html("$" + Math.round(overTime * 100) / 100)
+        $("#td3").html("$" + Math.round(doubleTime * 100) / 100)
+        $("#td4").html("<strong> $" +  Math.round(total * 100) / 100 + "</strong>")
+        //Payment Table
+        $(".hour1").html(hours1)
+        $(".hour2").html(hours2)
+        $(".hour3").html(hours3)
+        $(".totalHours").html("<strong>" +  Math.round(totalHours * 100) / 100 + "</strong>")
+        //Pay Per Hour
+        $(".averagePay").html("<strong> $" + Math.round(hourlyPay * 100) / 100 + "</strong>")
+
+if (hours1 <= 0 || hours2 <= 0 || hours3 <= 0 || rate1 <= 0 || rate2 <= 0 || rate3 <= 0){
+    $("div").removeClass("d-none");
+    $("#error").html("All values must be positive")
+    $("#error").removeClass("d-none");
+    $("#td1").html("-")
+    $("#td2").html("-")
+    $("#td3").html("-")
+    $("#td4").html("-")        
+    $(".hour1").html("-")
+    $(".hour2").html("-")
+    $(".hour3").html("-")
+    $(".totalHours").html("-")
+    $(".averagePay").html("-")
+} else {
+    $("div").removeClass("d-none");
+    $("#error").addClass("d-none");
+}
+    }
+</script>
+</div>
+<%- include("partials/footer") -%>

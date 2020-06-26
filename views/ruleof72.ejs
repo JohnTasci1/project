@@ -1,0 +1,56 @@
+<%- include("partials/header") -%>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <h1>Rule of 72 Calculator</h1>
+    <br/>
+    <p>*This is a simplified calculator so it won't have as accurate results</p>
+    <br/>
+    <h5>Number of Years Needed to Double My Investment</h5>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Annual Rate %" id="interestRate">
+    <button class = "btn btn-primary calculate-group" onClick = "ruleForYears()">Calculate</button>
+    <br/>
+    <button id = "ruleOfYears72" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+    </div>
+</div>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <br/>
+    <p></p>
+    <h5>Interest Rate Needed to Double My Investment</h5>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Years " id="years">
+    <button class = "btn btn-primary calculate-group" onClick = "ruleForInterest()">Calculate</button>
+    <br/>
+    <button id = "ruleOfInterest72" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+    </div>
+</div>
+<div>
+<script>
+    function ruleForYears(){
+        var interestRate = $("#interestRate").val()
+        var rule = 72 / interestRate
+        if(!isNaN(rule)){
+            $("#ruleOfYears72").html("It will take <strong>" + Math.round(rule * 100) / 100 + "</strong> years to double your investment at " + Math.round(interestRate * 100) / 100 + "% annual interest" )
+        }
+        if(interest <= 0){
+            $("#ruleOfYears72").html("Annual Rate can't be negative")
+        }
+    }
+    function ruleForInterest(){
+        var years = $("#years").val()
+        var rule2 = 72 / years 
+        if(!isNaN(rule2)){
+            $("#ruleOfInterest72").html("You need an annual interest rate of <strong>" + Math.round(rule2 * 100) / 100 + "%</strong> to double your investment in " + Math.round(years * 100) / 100 + " years" )
+        }
+        if(years <= 0){
+            $("#ruleOfInterest72").html("Years can't be negative")
+        }
+    }
+</script>
+</div>
+<%- include("partials/footer") -%>

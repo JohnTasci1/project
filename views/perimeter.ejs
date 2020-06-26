@@ -1,0 +1,264 @@
+<%- include("partials/header") -%>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <h1>Perimiter Calculator</h1>
+    <p>The following volume calculators are specially made for different shapes</p>
+    <br/>
+    <!-- Rectangular Calculator -->
+    <h3>Rectangle Perimeter Calculator</h3>
+    <br/>
+    <img class = "shapes" src="images/rectangle.png" alt="rectangle">
+    <br/>
+    <br/>
+    <input type="number" class="btn-group" id="rectanglePerimeterLength" min = 0 placeholder="Length">
+    <input type="number" class="btn-group" id="rectanglePerimeterWidth" min = 0 placeholder="Width">
+    <button class = "btn btn-primary calculate-group" onClick = "rectanglePerimeter()">Calculate</button>
+    <br/>
+    <button id = "rectanglePerimeterAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+    <br/>
+    </div>
+</div>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <br/>
+    <!-- Square Perimeter Calculator -->
+    <h3>Square Perimeter Calculator</h3>
+    <br/>
+    <img class = "shapes" src="images/square.png" alt="square">
+    <br/>
+    <br/>
+    <input type="number" class="btn-group" id="squarePerimeterLength" min = 0 placeholder="Length">
+    <button class = "btn btn-primary calculate-group" onClick = "squarePerimeter()">Calculate</button>
+    <br/>
+    <button id = "squarePerimeterAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+    <br/>
+    </div>
+</div>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <br/>
+    <!-- Triangle Perimeter Calculator -->
+    <h3>Triangle Perimeter Calculator</h3>
+    <br/>
+    <img class = "shapes" src="images/triangle.png" alt="triangle">
+    <br/>
+    <br/>
+    <input type="number" class="btn-group" id="trianglePerimeterSide1" min = 0 placeholder="Side">
+    <input type="number" class="btn-group" id="trianglePerimeterBase" min = 0 placeholder="Base">
+    <input type="number" class="btn-group" id="trianglePerimeterSide2" min = 0 placeholder="Side">
+    <button class = "btn btn-primary calculate-group" onClick = "trianglePerimeter()">Calculate</button>
+    <br/>
+    <button id = "trianglePerimeterAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+    <br/>
+    </div>
+</div>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <br/>
+    <!-- Circle Perimeter Calculator -->
+    <h3>Circle Perimeter (Circumference) Calculator</h3>
+    <br/>
+    <img class = "shapes" src="images/circle.png" alt="circle">
+    <br/>
+    <br/>
+    <input type="number" class="btn-group" id="circlePerimeterRadius" min = 0 placeholder="Radius">
+    <button class = "btn btn-primary calculate-group" onClick = "circlePerimeter()">Calculate</button>
+    <br/>
+    <button id = "circlePerimeterAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+    <br/>
+    </div>
+</div>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <br/>
+    <!-- Quadrilateral/Trapezoid Perimeter Calculator -->
+    <h3>Quadrilateral/Trapezoid Perimeter Calculator</h3>
+    <br/>
+    <img class = "shapes" src="images/Trapezoid.png" alt="Trapezoid">
+    <br/>
+    <br/>
+    <input type="number" class="btn-group" id="trapezoidPerimeterBase" min = 0 placeholder="Base">
+    <input type="number" class="btn-group" id="trapezoidPerimeterBase2" min = 0 placeholder="Base">
+    <input type="number" class="btn-group" id="trapezoidPerimeterSide" min = 0 placeholder="Side">
+    <input type="number" class="btn-group" id="trapezoidPerimeterSide2" min = 0 placeholder="Side">
+    <button class = "btn btn-primary calculate-group" onClick = "trapezoidPerimeter()">Calculate</button>
+    <br/>
+    <button id = "trapezoidPerimeterAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+    <br/>
+    </div>
+</div>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <br/>
+    <!-- Parallelogram Perimeter Calculator -->
+    <h3>Parallelogram Perimeter Calculator</h3>
+    <br/>
+    <img class = "shapes" src="images/Parallelogram.png" alt="Parallelogram">
+    <br/>
+    <br/>
+    <input type="number" class="btn-group" id="parallelogramPerimeterLength" min = 0 placeholder="Length">
+    <input type="number" class="btn-group" id="parallelogramPerimeterWidth" min = 0 placeholder="Width">
+    <button class = "btn btn-primary calculate-group" onClick = "parallelogramPerimeter()">Calculate</button>
+    <br/>
+    <button id = "parallelogramPerimeterAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+    <br/>
+    </div>
+</div>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <br/>
+    <!-- Rhombus Perimeter Calculator -->
+    <h3>Rhombus Perimeter Calculator</h3>
+    <br/>
+    <img class = "shapes" src="images/rhombus.png" alt="Parallelogram">
+    <br/>
+    <br/>
+    <input type="number" class="btn-group" id="rhombusPerimeterLength" min = 0 placeholder="Length">
+    <button class = "btn btn-primary calculate-group" onClick = "rhombusPerimeter()">Calculate</button>
+    <br/>
+    <button id = "rhombusPerimeterAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+    <br/>
+    </div>
+</div>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <br/>
+    <!-- Kite Perimeter Calculator -->
+    <h3>Kite Perimeter Calculator</h3>
+    <br/>
+    <img class = "shapes" src="images/kite.png" alt="Kite">
+    <br/>
+    <br/>
+    <input type="number" class="btn-group" id="kitePerimeterTopLength" min = 0 placeholder="Top Length">
+    <input type="number" class="btn-group" id="kitePerimeterBottomLength" min = 0 placeholder="Bottom Length">
+    <button class = "btn btn-primary calculate-group" onClick = "kitePerimeter()">Calculate</button>
+    <br/>
+    <button id = "kitePerimeterAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+    <br/>
+    </div>
+</div>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <br/>
+    <!-- Annulus Perimeter Calculator -->
+    <h3>Annulus (ring) Perimeter Calculator</h3>
+    <br/>
+    <img class = "shapes" src="images/annulus.svg" alt="Kite">
+    <br/>
+    <br/>
+    <input type="number" class="btn-group" id="annulusPerimeterTopRadius" min = 0 placeholder="R">
+    <input type="number" class="btn-group" id="annulusPerimeterBottomRadius" min = 0 placeholder="r">
+    <button class = "btn btn-primary calculate-group" onClick = "annulusPerimeter()">Calculate</button>
+    <br/>
+    <button id = "annulusPerimeterAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+    <br/>
+    </div>
+</div>
+<div>
+    <script>
+    function rectanglePerimeter(){
+        var rectanglePerimeterResult = (2 * $("#rectanglePerimeterLength").val()) + (2 * $("#rectanglePerimeterWidth").val())
+     if(!isNaN(rectanglePerimeterResult)){
+            $("#rectanglePerimeterAnswer").html("Rectangle Perimiter: " + rectanglePerimeterResult)
+        }
+     if ($("#rectanglePerimeterWidth").val() <= 0 || $("#rectanglePerimeterLength").val() <= 0 ){
+            $("#rectanglePerimeterAnswer").html("All values must be positive!")
+        }
+    }
+    function squarePerimeter(){
+        var squarePerimeterResult = 4 * $("#squarePerimeterLength").val()
+    if(!isNaN(squarePerimeterResult)){
+        $("#squarePerimeterAnswer").html("Square Perimiter: " + squarePerimeterResult)
+     }
+     if ( $("#squarePerimeterLength").val() <= 0){
+            $("#squarePerimeterAnswer").html("All values must be positive!")
+        }
+    }
+    function trianglePerimeter(){
+        var trianglePerimeterResult = Number($("#trianglePerimeterSide1").val()) + Number($("#trianglePerimeterBase").val()) + Number($("#trianglePerimeterSide2").val())
+    if(!isNaN(trianglePerimeterResult)){
+        $("#trianglePerimeterAnswer").html("Triangle Perimeter: " + trianglePerimeterResult)
+        }
+    if ($("#trianglePerimeterSide1").val() <= 0 || $("#trianglePerimeterBase").val() <= 0 || $("#trianglePerimeterSide2").val() <= 0){
+        $("#trianglePerimeterAnswer").html("All values must be positive!");
+        }
+    }
+    function circlePerimeter(){
+        var circlePerimeterResult = 2 * Math.PI * $("#circlePerimeterRadius").val()
+    if(!isNaN(circlePerimeterResult)){
+        $("#circlePerimeterAnswer").html("Circle Circumference: " + circlePerimeterResult)
+     }
+     if ($("#circlePerimeterRadius").val() <= 0){
+         $("#circlePerimeterAnswer").html("All values must be positive!")
+        }
+    }
+    function trapezoidPerimeter(){
+         var trapezoidPerimeterResult = Number($("#trapezoidPerimeterBase").val()) + Number($("#trapezoidPerimeterBase2").val()) + Number($("#trapezoidPerimeterSide").val()) + Number($("#trapezoidPerimeterSide2").val())
+     if(!isNaN(trapezoidPerimeterResult)){
+        $("#trapezoidPerimeterAnswer").html("Trapezoid Perimeter: " + trapezoidPerimeterResult)
+     }
+     if ($("#trapezoidPerimeterBase").val() <= 0 || $("#trapezoidPerimeterBase2").val() <= 0 || $("#trapezoidPerimeterSide").val() <= 0 || $("#trapezoidPerimeterSide2").val() <= 0){
+        $("#trapezoidPerimeterAnswer").html("All values must be positive!")
+    }
+    }
+    // Parallelogram Perimeter
+    function parallelogramPerimeter(){
+        var parallelogramPerimeterResult = parseFloat(2 * $("#parallelogramPerimeterLength").val() + 2 * $("#parallelogramPerimeterWidth").val())
+    if(!isNaN(parallelogramPerimeterResult)){
+        $("#parallelogramPerimeterAnswer").html("Parallelogram Perimeter: " + parallelogramPerimeterResult)
+     }
+     if ($("#parallelogramPerimeterLength").val() <= 0 || $("#parallelogramPerimeterWidth").val() <= 0){
+            $("#parallelogramPerimeterAnswer").html("All values must be positive!")
+        }
+    }
+    function rhombusPerimeter(){
+        var rhombusPerimeterResult = 4 * $("#rhombusPerimeterLength").val()
+     if(!isNaN(rhombusPerimeterResult)){
+        $("#rhombusPerimeterAnswer").html("The perimeter is " + rhombusPerimeterResult)
+     }
+     if ($("#rhombusPerimeterLength").val() <= 0){
+            $("#rhombusPerimeterAnswer").html("All values must be positive!")
+        }
+    }
+    function kitePerimeter(){
+        var kitePerimeterResult = parseFloat(2 * $("#kitePerimeterTopLength").val() + 2 * $("#kitePerimeterBottomLength").val())
+     if(!isNaN(kitePerimeterResult)){
+            $("#kitePerimeterAnswer").html("The perimeter is " + kitePerimeterResult)
+     }
+     if ($("#kitePerimeterTopLength").val() <= 0 || $("#kitePerimeterBottomLength").val() <= 0){
+            $("#kitePerimeterAnswer").html("All values must be positive!")
+        }
+    }
+    // Annulus Perimeter
+    function annulusPerimeter(){
+        var annulusPerimeterResult = 2 * Math.PI * (Number($("#annulusPerimeterTopRadius").val()) + Number($("#annulusPerimeterBottomRadius").val()))
+    if(!isNaN(annulusPerimeterResult)){
+        $("#annulusPerimeterAnswer").html("The perimeter is " + annulusPerimeterResult)
+     }
+     if ($("#annulusPerimeterBottomRadius").val() <= 0 || $("#annulusPerimeterTopRadius").val() <= 0){
+            $("#annulusPerimeterAnswer").html("All values must be positive!")
+    } else if ($("#annulusPerimeterTopRadius").val() - $("#annulusPerimeterBottomRadius").val() <= 0){
+            $("#annulusPerimeterAnswer").html("First value must be greater than second")
+    }
+}
+    </script>
+</div>
+<%- include("partials/footer") -%>

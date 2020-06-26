@@ -1,0 +1,62 @@
+<%- include("partials/header") -%>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <h1>Auto Loan Calculator</h1>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Loan Amount" id="loanAmount">
+    <input type="number" class="btn-group" placeholder = "Loan Monthly Term" id="loanTerm">
+    <input type="number" class="btn-group" placeholder = "Annual Interest Rate" id="interestRate">
+    <button class = "btn btn-primary calculate-group" onClick = "autoLoanRepayment()" id = "simpleLoanCalculate">Calculate</button>
+    <br/>
+    <button id = "error" type = "button" class = "btn btn-light border border-dark d-none"></button>
+</center>
+    </div>
+</div>
+<div class = "w-auto">
+    <center>
+        <!-- First Table -->
+<table class = "table table-bordered">
+    <thead class= "table-dark">
+        <tr style = "text-align: center">
+            <th scope="col">Monthly Auto Loan</th>
+            <th scope="col">Total Interest Payment</th>
+            <th scope="col">Total Loan Payment</th>
+        </tr>
+    </thead>
+    <tr style = "text-align: right">
+        <td class = "monthlyResult"></td>
+        <td class = "interestPayment"></td>
+        <td class = "allTotal"></td> 
+    </tr>
+</table>
+</center>
+</div>
+<div>
+<script>
+function autoLoanRepayment(){
+    var loanAmount = $("#loanAmount").val()
+    var interestRate = $("#interestRate").val()
+    var loanTerm = $("#loanTerm").val()
+
+    var i = interestRate * 0.01 / 12
+    var calculate = (loanAmount * i * Math.pow(1 + i, loanTerm)) / (Math.pow(1 + i, loanTerm) - 1)
+
+    var monthlyResult = calculate
+    var allTotal = monthlyResult * loanTerm
+    var interestPayment = allTotal - loanAmount
+
+    $(".interestPayment").html("$" + Math.round(interestPayment * 100) / 100)
+    $(".allTotal").html("$" + Math.round(allTotal * 100) / 100)
+    $(".monthlyResult").html("$" + Math.round(monthlyResult * 100) / 100)
+
+    if (loanAmount <= 0 || interestRate <= 0 || loanTerm <= 0){
+        $("#error").html("All values must be positive")
+        $("td").html("-")
+    } else {
+        $("#error").addClass("d-none")
+    }
+}
+</script>
+</div>
+<%- include("partials/footer") -%>

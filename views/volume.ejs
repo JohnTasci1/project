@@ -1,0 +1,211 @@
+<%- include("partials/header") -%>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <h1>Volume Calculator</h1>
+     <!-- Rectangular Calculator -->
+    <p>The following volume calculators are specially made for different shapes</p>
+    <br/>
+    <h3>Rectangular Volume Calculator</h3>
+    <br/>
+    <img class = "shapes" src="images/rectangle.png" alt="rectangle">
+    <br/>
+    <br/>
+    <input type="number" class="btn-group" id="rectangleVolumeLength" placeholder="Length">
+    <input type="number" class="btn-group" id="rectangleVolumeWidth" placeholder="Width">
+    <input type = "number" class="btn-group"  id = "rectangleVolumeHeight" placeholder="Height">
+    <button class = "btn btn-primary calculate-group" onClick = "rectangleVolume()">Calculate</button>
+    <br/>
+    <button id = "rectangleAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+    <br/>
+    </div>
+    <!-- Cube Calculator -->
+     <div>
+        <br/>
+        <center>
+        <h3>Cube Volume Calculator</h3>
+        <br/>
+        <img class = "shapes" src="images/cube.png" alt="cube">
+        <br/>
+        <br/>
+        <input type="number" class="btn-group"  id="cubeLength" placeholder="Length">
+        <button class = "btn btn-primary calculate-group" onClick = "cubeVolume()">Calculate</button>
+        <br/>
+        <button id = "cubeAnswer" type = "button" class = "btn btn-light border border-dark">Answer</button>
+        </center>
+     </div>
+     <!-- Cylinder Calculator -->
+     <div>
+        <br/>
+        <center>
+        <h3>Cylinder Volume Calculator</h3>
+        <br/>
+        <img class = "shapes" src="images/cylinder.png" alt="cylinder">
+        <br/>
+        <br/>
+        <input type="number" class="btn-group" placeholder="Radius"  id="cylinderVolumeRadius">
+        <input type = "number" class="btn-group" placeholder="Height" id = "cylinderVolumeHeight">
+        <button class = "btn btn-primary calculate-group" onClick = "cylinderVolume()">Calculate</button>
+        <br/>
+        <button id = "cylinderAnswer" type = "button" class = "btn btn-light border border-dark">Answer</button>
+        </center>
+     </div>
+        <!-- Capsule Calculator -->
+        <div>
+            <br/>
+            <center>
+            <h3>Capsule Volume Calculator</h3>
+            <br/>
+            <img class = "shapes" src="images/capsule.png" alt="capsule">
+            <br/>
+            <br/>
+            <input type="number" class="btn-group"  placeholder="Radius" id="capsuleVolumeRadius">
+            <input type = "number" class="btn-group"  placeholder="Height" id = "capsuleVolumeHeight">
+            <button class = "btn btn-primary calculate-group" onClick = "capsuleVolume()">Calculate</button>
+            <br/>
+            <button id = "capsuleAnswer" type = "button" class = "btn btn-light border border-dark">Answer</button>
+            </center>
+         </div>
+            <!-- Sphere Calculator -->
+        <div>
+            <br/>
+            <center>
+            <h3>Sphere Volume Calculator</h3>
+            <br/>
+            <img class = "shapes" src="images/sphere.png" alt="sphere">
+            <br/>
+             <br/>
+            <input type="number" class="btn-group" placeholder="Radius"   id="sphereVolumeRadius">
+            <button class = "btn btn-primary calculate-group" onClick = "sphereVolume()">Calculate</button>
+            <br/>
+            <button id = "sphereAnswer" type = "button" class = "btn btn-light border border-dark">Answer</button>
+            </center>
+         </div>
+        <!-- Cone Calculator -->
+        <div>
+            <br/>
+            <center>
+            <h3>Cone Volume Calculator</h3>
+            <br/>
+            <img class = "shapes" src="images/cone.png" alt="cone">
+            <br/>
+            <br/>
+            <input type="number" class="btn-group"  placeholder="Radius"  id="coneVolumeRadius">
+            <input type = "number" class="btn-group"  placeholder="Height" id ="coneVolumeHeight">
+            <button class = "btn btn-primary calculate-group" onClick = "coneVolume()">Calculate</button>
+            <br/>
+            <button id = "coneAnswer" type = "button" class = "btn btn-light border border-dark">Answer</button>
+            </center>
+         </div>
+           <!-- Square Pyramid Calculator -->
+        <div>
+            <br>
+            <center>
+            <h3>Square Pyramid Calculator</h3>
+            <img class = "shapes" src="images/square.png" alt="square">
+            <input type="number" class="btn-group"  placeholder="Base Edge"  id="pyramidVolumeEdge">
+            <input type = "number"class="btn-group" placeholder="Height"   id ="pyramidVolumeHeight">
+            <button class = "btn btn-primary calculate-group" onClick = "pyramidVolume()">Calculate</button>
+            <br/>
+            <button id = "pyramidAnswer" type = "button" class = "btn btn-light border border-dark">Answer</button>
+            </center>
+         </div>
+</div>
+<div>
+<script>
+    //Rectangle Volume Calculator
+function rectangleVolume(){
+        var rectangleVolumeLength = $("#rectangleVolumeLength").val()
+        var rectangleVolumeWidth = $("#rectangleVolumeWidth").val()
+        var rectangleVolumeHeight = $("#rectangleVolumeHeight").val()
+
+        var rectangleResult = rectangleVolumeLength * rectangleVolumeWidth * rectangleVolumeHeight
+        if(!isNaN(rectangleResult)){
+            $("#rectangleAnswer").html("The volume is " + rectangleResult)
+     }
+        if (rectangleVolumeWidth <= 0 || rectangleVolumeLength <= 0 || rectangleVolumeHeight <= 0){
+            $("#rectangleAnswer").html("All values must be positive!")
+        }
+    }
+    //Cube Volume Calculator
+function cubeVolume(){
+    var cubeLength = $("#cubeLength").val();
+
+    var cubeResult = Math.pow(cubeLength, 3)
+    if(!isNaN(cubeResult)){
+        $("#cubeAnswer").html("The volume is " + cubeResult)
+     }
+     if (cubeResult <= 0){
+        $("#cubeAnswer").html("All values must be positive!")
+    }
+    
+}
+    //Cylinder Volume Calculator
+    function cylinderVolume(){
+        
+        var cylinderVolumeHeight = $("#cylinderVolumeHeight").val()
+        var cylinderVolumeRadius = $("#cylinderVolumeRadius").val()
+        
+        var getCylinderVolume = Math.PI * (Math.pow(cylinderVolumeRadius, 2) * cylinderVolumeHeight)
+        if(!isNaN(getCylinderVolume)){
+            $("#cylinderAnswer").html("The volume is " + getCylinderVolume)
+     }
+        if (cylinderVolumeHeight <= 0 || cylinderVolumeRadius <= 0){
+            $("#cylinderAnswer").html("All values must be positive!")
+        }
+    }
+    //Capsule Volume Calculator
+    function capsuleVolume(){
+        var capsuleVolumeHeight = $("#capsuleVolumeHeight").val()
+        var capsuleVolumeRadius = $("#capsuleVolumeRadius").val()
+
+        var getCapsuleVolume = parseFloat(4/3 * Math.PI * Math.pow(capsuleVolumeRadius, 3) + Math.PI * Math.pow(capsuleVolumeRadius, 2) + capsuleVolumeHeight)
+    if(!isNaN(getCapsuleVolume)){
+            $("#capsuleAnswer").html("The volume is " + getCapsuleVolume)
+     }
+    if (capsuleVolumeRadius <= 0 || capsuleVolumeHeight <= 0){
+            $("#capsuleAnswer").html("All values must be positive!")
+    }
+}
+    //Sphere Volume Calculator
+    function sphereVolume(){
+        var sphereVolumeRadius = $("#sphereVolumeRadius").val()
+       
+        var getSphereVolume = 4/3 * Math.PI * Math.pow(sphereVolumeRadius, 3)
+    if(!isNaN(getSphereVolume)){
+        $("#sphereAnswer").html("The volume is " + getSphereVolume)
+     }
+     if (getSphereVolume <= 0){
+        $("#sphereAnswer").html("All values must be positive!")
+        } 
+    }
+    //Cone Volume Calculator
+    function coneVolume(){
+        var coneVolumeHeight = $("#coneVolumeHeight").val()
+        var coneVolumeRadius = $("#coneVolumeRadius").val()
+
+        var getConeVolume = 1/3 * Math.PI * Math.pow(coneVolumeRadius,2) * coneVolumeHeight
+    if(!isNaN(getConeVolume)){
+            $("#coneAnswer").html("The volume is " + getConeVolume)
+     }  
+        if (coneVolumeHeight <= 0 || coneVolumeRadius <= 0){
+            $("#coneAnswer").html("All values must be positive!")
+        }
+    }
+      //Pyramid Volume Calculator
+      function pyramidVolume(){
+        var pyramidVolumeEdge = $("#pyramidVolumeEdge").val()
+        var pyramidVolumeHeight = $("#pyramidVolumeHeight").val()
+
+        var getPyramidVolume = 1/3 * Math.pow(pyramidVolumeEdge,2) * pyramidVolumeHeight
+    if(!isNaN(getPyramidVolume)){
+        $("#pyramidAnswer").html("The volume is " + getPyramidVolume)
+     } 
+     if (pyramidVolumeEdge <= 0 || pyramidVolumeHeight <= 0){
+         $("#pyramidAnswer").html("All values must be positive!")
+        } 
+    }
+</script>
+</div>
+<%- include("partials/footer") -%>

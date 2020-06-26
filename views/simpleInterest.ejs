@@ -1,0 +1,36 @@
+<%- include("partials/header") -%>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <h1>Simple Interest Calculator</h1>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Principal $" id="principal">
+    <input type="number" class="btn-group" placeholder = "Rate %" id="rate">
+    <input type="number" class="btn-group" placeholder = "Years" id="years">
+    <button class = "btn btn-primary calculate-group" onClick = "simpleInterest()" id = "simpleInterestCalculator">Calculate</button>
+    <br/>
+    <button id = "total1" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+    </div>
+</div>
+<div>
+<script>
+    function simpleInterest(){
+    var principal = $("#principal").val()
+    var rate = $("#rate").val()
+    var years = $("#years").val()
+
+    var r = rate * 0.01
+    var total = principal * (1 + r * years)
+    var interest = total - principal
+
+if(!isNaN(total)){
+        $("#total1").html("After " + years + " years your investment will be worth: $" + Math.round(total * 100) / 100 + "<br/> Principal: $" + Math.round(principal * 100) / 100 + "<br/> Interest: $" + Math.round(interest * 100) / 100)
+    } 
+    if(principal <= 0 || rate < 0 || years <= 0){
+        $("#total1").html("All values must be positive")
+    }
+}
+</script>
+</div>
+<%- include("partials/footer") -%>

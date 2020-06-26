@@ -1,0 +1,88 @@
+<%- include("partials/header") -%>
+<div id = "mathTopLayer" class = "container-fluid">
+    <h1 class="text-white topLayerText" >Welcome to Math Calculators</h1>
+   <br/>
+    <p  class="text-white topLayerText" >All the math calculators you need</p>
+</div>
+<br/>
+<br/>
+<!-- First Row -->
+<div style = "text-align: center" class ="card-group">
+    <div onclick="location.href='/calculator';" class="card">
+        <img src="images/calculator.png" class="card-img-top mx-auto" alt="calculator">
+      <div class="card-body">
+        <h5 class="card-title">Calculator</h5>
+        <!-- <p class="card-text">Add, Subtract, Multiply, and Divide. All you need to do some math!</p> -->
+        <a class="btn btn-primary" href="/calculator" role="button">Calculate Now!</a>
+    </div>
+    </div>
+    <div onclick="location.href='/slope-calculator';" class="card">
+      <img src="images/slope.svg" class="card-img-top mx-auto" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Slope Calculator</h5>
+        <a class="btn btn-primary" href="/slope-calculator" role="button">Slope Away!</a>
+      </div>
+    </div>
+    <div onclick="location.href='/square-root-calculator';" class="card">
+      <img src="images/squareRoot.png" class="card-img-top mx-auto" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Square Root Calculator</h5>
+        <a class="btn btn-primary" href="/square-root-calculator" role="button">Square Root!</a>
+    </div>
+    </div>
+  </div>
+<!-- Second Row -->
+  <div style = "text-align: center" class ="card-group">
+    <div onclick="location.href='/shapes-area-calculators';" class="card">
+        <img src="images/area.png" class="card-img-top mx-auto" alt="calculator">
+      <div class="card-body">
+        <h5 class="card-title">Area Calculator</h5>
+        <a class="btn btn-primary" href="/shapes-area-calculators" role="button">Get Area!</a>
+    </div>
+    </div>
+    <div onclick="location.href='/shapes-volume-calculators';" class="card">
+      <img src="images/volume.png" class="card-img-top mx-auto" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Volume Calculator</h5>
+        <a class="btn btn-primary" href="/shapes-volume-calculators" role="button">Get Volume!</a>
+      </div>
+    </div>
+    <div onclick="location.href='/surface-area-calculators';" class="card">
+      <img src="images/surfaceArea.png" class="card-img-top mx-auto surfaceAreaImage" alt="...">
+      <div class="card-body">
+        <br/>
+        <h5 class="card-title">Surface Area Calculator</h5>
+        <a class="btn btn-primary" href="/surface-area-calculators" role="button">Surface Area!</a>
+    </div>
+    </div>
+    </div>
+    <!-- Third Row -->
+    <div style = "text-align: center" class ="card-group">
+      <div  onclick="location.href='/shapes-perimeter-calculators';" class="card">
+        <br/>
+          <img src="images/perimeter.png" class="card-img-top mx-auto" alt="calculator">
+        <div class="card-body">
+          <br/>
+          <h5 class="card-title">Perimeter Calculator</h5>
+          <a class="btn btn-primary" href="/shapes-perimeter-calculators" role="button">Get Perimeter!</a>
+      </div>
+      </div>
+      <div onclick="location.href='/quadratic-calculator';"class="card">
+        <br/>
+        <img src="images/quadratics.png" class="card-img-top mx-auto shapes" alt="quadratics">
+        <br/>
+        <div class="card-body">
+          <h5 class="card-title">Quadratic Calculator</h5>
+          <a class="btn btn-primary" href="/quadratic-calculator" role="button">Get X!</a>
+        </div>
+      </div>
+      <div onclick="location.href='/mixed-numbers-calculators';" class="card">
+        <br/>  
+        <img src="images/mixednumbers.png" class="card-img-top mx-auto surfaceAreaImage" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Mixed Numbers Calculator</h5>
+          <a class="btn btn-primary" href="/mixed-numbers-calculators" role="button">Mixed Numbers!</a>
+      </div>
+      </div>
+      </div>
+  <%- include("partials/footer") -%>

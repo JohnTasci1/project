@@ -1,0 +1,40 @@
+<%- include("partials/header") -%>
+<!-- Quadratic Calculator -->
+<div style = "padding: 3%">
+    <center>
+    <h1>Quadratic Calculator</h1>
+    <p>Please enter the coefficients <strong>a, b</strong> and <strong> c</strong> of a quadratic equation of the form
+        <strong>ax&#x00B2 + bx + c = 0</strong>
+    <br/>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "a" id="a">
+    <input type="number" class="btn-group" placeholder = "b" id="b">
+    <input type="number" class="btn-group" placeholder = "c" id="c">
+    <button class = "btn btn-primary calculate-group" onClick = "quadratic()">Calculate</button>
+<br/>
+    <button id = "quadraticAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+</div>
+<div>
+<script>
+function quadratic(){
+    var a = $("#a").val();
+    var b = $("#b").val();
+    var c = $("#c").val();
+
+    var x1 = (-b - Math.sqrt(Math.pow(b, 2) - 4 * a * c)) / (2 * a)
+    var x2 = (-b + Math.sqrt(Math.pow(b, 2) - 4 * a * c)) / (2 * a)
+
+    if (a == 0 || b == 0){
+        $("#quadraticAnswer").html("Inputs can't be 0!")
+    } else if (isNaN(x1)){
+        $("#quadraticAnswer").html("No real solutions")
+    }else {                                                                                //It doesn't show the value when it's 1 or -1
+        $("#quadraticAnswer").html("For the equation " + "<strong>" + a + 
+        "x\u00B2" + " + " + b + "x + " + c  + " = 0 </strong>" + "<br/>" + " x can equal " + "<strong>" + x1 + " or " + x2 + "</strong>")
+    } 
+
+}
+</script>
+</div>
+<%- include("partials/footer") -%>

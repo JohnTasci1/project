@@ -1,0 +1,57 @@
+<%- include("partials/header") -%>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <h1>Bid-Ask Calculator</h1>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Bid Price: $" id="bidPrice">
+    <input type="number" class="btn-group" placeholder = "Ask Price: $" id="askPrice">
+    <button class = "btn btn-primary calculate-group" onClick = "bidAsk()">Calculate</button>
+    <br/>
+    <button id = "error" type = "button" class = "btn btn-light border border-dark d-none"></button>
+    </center>
+    </div>
+</div>
+    <div class ="w-auto">
+        <center>
+    <table class = "table table-bordered d-none">
+        <thead class= "table-dark">
+            <tr style = "text-align: center">
+                <th scope="col">Spread</th>
+                <th scope="col">Margin</th>
+            </tr>
+        </thead>
+        <tr style = "text-align: right">
+            <td class = "spread"></td>
+            <td class = "margin"></td>
+        </tr>
+    </table>
+    </center>
+    </div>
+<div>
+<script>
+    function bidAsk(){
+        var bidPrice = $("#bidPrice").val()
+        var askPrice = $("#askPrice").val()
+
+        var spread = askPrice - bidPrice
+        var margin = (askPrice-bidPrice) / askPrice * 100
+
+        $(".spread").html(Math.round(spread * 100) / 100)
+        $(".margin").html(Math.round(margin * 100) / 100 + "%")
+
+    if(!isNaN(spread, margin)){
+    }
+    if (bidPrice <= 0 || askPrice <= 0){
+        $("td").html("-")
+        $("table").removeClass("d-none");
+        $("#error").removeClass("d-none");
+        $("#error").html("Values must be positive")
+    } else {
+        $("table").removeClass("d-none");
+        $("#error").addClass("d-none");
+    }
+}
+</script>
+</div>
+<%- include("partials/footer") -%>

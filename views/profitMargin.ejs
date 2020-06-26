@@ -1,0 +1,77 @@
+<%- include("partials/header") -%>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <h1>Profit Margin Calculator</h1>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Cost $" id="cost">
+    <input type="number" class="btn-group" placeholder = "Revenue $" id="revenue">
+    
+    <button class = "btn btn-primary calculate-group" onClick = "profitMargin()">Calculate</button>
+    <br/>
+    <button id = "error" type = "button" class = "btn btn-light border border-dark d-none"> Answer </button>
+    </center>
+    </div>
+</div>
+<div style = "padding: 3%;">
+    <center>
+        <!-- First Table -->
+<table class = "table table-bordered d-none">
+    <thead class= "table-dark">
+        <tr style = "text-align: center">
+            <th style = " width:33%" scope="col">Net Profit Margin</th>
+            <th style = " width:34%" scope="col">Net Profit</th>
+            <th style = " width:33%" scope="col">Profit Percentage</th>
+        </tr>
+    </thead>
+    <tr style = "text-align: right">
+        <td class = "profitM"></td>
+        <td class = "profit"></td> 
+        <td class = "profitP"></td> 
+    </tr>
+</table>
+</center>
+</div>
+<div class ="w-auto">
+    <center>
+        <!-- First Table -->
+<table class = "table table-bordered d-none">
+    <thead class= "table-dark">
+        <tr style = "text-align: center">
+            <th style = " width:33%" scope="col">Gross Profit</th>
+            <th style = " width:34%" scope="col">Cost</th>
+            <th style = " width:33%" scope="col">Markup</th>
+        </tr>
+    </thead>
+    <tr style = "text-align: right">
+        <td class = "gProfit"></td>
+        <td class = "cost"></td> 
+        <td class = "markup"></td> 
+    </tr>
+</table>
+</center>
+</div>
+<div>
+<script>
+    function profitMargin(){
+    var profit = $("#revenue").val() - $("#cost").val()
+    var profitMargin = profit / $("#revenue").val() * 100
+    var profitPercent = profit / $("#cost").val() * 100
+
+    $(".profitM").html(Math.round(profitMargin * 100) / 100 + "%")
+    $(".profit").html("$" + Math.round(profit * 100) / 100)
+    $(".profitP").html(Math.round(profitPercent * 100) / 100 + "%")
+
+    if ($("#cost").val() <= 0 || $("#revenue").val() <= 0){
+      $("td").html("-")
+      $("table").removeClass("d-none")
+      $("#error").removeClass("d-none")
+      $("#error").html("All values must be positive")
+    } else {
+        $("table").removeClass("d-none")
+        $("#error").addClass("d-none")
+    }
+}
+</script>
+</div>
+<%- include("partials/footer") -%>

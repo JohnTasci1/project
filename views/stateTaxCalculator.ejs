@@ -1,0 +1,71 @@
+<%- include("partials/header") -%>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <h1>State and Local Sales Tax Calculator</h1>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Net Price $" id="netPrice">
+    <input type="number" class="btn-group" placeholder = "State Tax %" id="stateTax">
+    <input type="number" class="btn-group" placeholder = "Use Tax %" id="useTax">
+    <input type="number" class="btn-group" placeholder = "Local Tax %" id="localTax">
+    <button class = "btn btn-primary calculate-group" onClick = "stateTax()">Calculate</button>
+    <br/>
+    <button id = "error" type = "button" class = "btn btn-light border border-dark d-none"> Answer </button>
+    </center>
+    </div>
+</div>
+<div class = "w-auto">
+    <center>
+        <!-- First Table -->
+<table class = "table table-bordered d-none">
+    <thead class= "table-dark">
+        <tr style = "text-align: center">
+            <th scope="col">Net Price</th>
+            <th scope="col">State Tax</th>
+            <th scope="col">Use Tax</th>
+            <th scope="col">Local Tax</th>
+            <th scope="col">Total Price</th>
+        </tr>
+    </thead>
+    <tr style = "text-align: right">
+        <td class = "netPrice"></td>
+        <td class = "stateTax"></td>
+        <td class = "useTax"></td> 
+        <td class = "localTax"></td> 
+        <td class = "total"></td> 
+    </tr>
+</table>
+</center>
+</div>
+<div>
+<script>
+    function stateTax(){
+        var netPrice = $("#netPrice").val()
+        var stateTax = $("#stateTax").val()
+        var useTax = $("#useTax").val()
+        var localTax = $("#localTax").val()
+
+        var stateTaxCalc = netPrice * (stateTax / 100)
+        var useTaxCalc = netPrice * (useTax / 100)
+        var localTaxCalc = netPrice * (localTax / 100)
+        var total = Number(netPrice) + Number(stateTaxCalc) + Number(useTaxCalc) + Number(localTaxCalc)
+    
+    $(".netPrice").html("$" + Math.round(netPrice * 100) / 100)
+    $(".stateTax").html(Math.round(stateTaxCalc * 100) / 100 + "(" + stateTax + "%)")
+    $(".useTax").html(Math.round(useTaxCalc * 100) / 100 + "(" + useTax + "%)")
+    $(".localTax").html(Math.round(localTaxCalc * 100) / 100 + "(" + localTax + "%)")
+    $(".total").html("$" + Math.round(total * 100) / 100)
+
+    if (netPrice <= 0 || stateTax < 0 || useTax < 0 || localTax < 0){
+        $("td").html("-")
+        $("#error").removeClass("d-none")
+        $("table").removeClass("d-none")
+        $("#error").html("Negative values are not valid")
+    } else { 
+        $("#error").addClass("d-none")
+        $("table").removeClass("d-none")
+    }
+}
+</script>
+</div>
+<%- include("partials/footer") -%>

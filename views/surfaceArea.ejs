@@ -1,0 +1,285 @@
+<%- include("partials/header") -%>
+<!-- Sphere Surface Area Calculator -->
+<div style = "padding: 3%">
+    <center>
+    <h1>Surface Area Calculators</h1>
+    <p>The following volume calculators are specially made for different shapes</p>
+    <br/>
+    <br/>
+    <h1>Sphere Calculator</h1>
+    <br/>
+    <img class = "shapes" src="images/sphere.png" alt="sphere">
+    <br/>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Radius" min = 0 id="sphereSurfaceRadius">
+    <button class = "btn btn-primary calculate-group" onClick = "sphereSurface()">Calculate</button>
+    <br/>
+    <button id = "sphereSurfaceAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+    <!-- Cone Surface Area Calculator -->
+</div>
+<div style = "padding: 3%">
+    <center>
+    <br/>
+    <h1>Cone Calculator</h1>
+    <br/>
+    <img class = "shapes" src="images/cone.png" alt="cone">
+    <br/>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Base Radius" min = 0 id="coneSurfaceRadius">
+    <input type="number" class="btn-group" placeholder = "Height" min = 0 id="coneSurfaceHeight">
+    <button class = "btn btn-primary calculate-group" onClick = "coneSurface()">Calculate</button>
+    <br/>
+    <button id = "coneBaseAnswer" type = "button" class = "btn btn-light border border-dark">Answer</button>
+    <br/>
+    <button id = "coneLateralAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    <br/>
+    <button id = "coneSurfaceAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+</div>
+<!-- Cube Surface Area Calculator -->
+<div style = "padding: 3%">
+    <center>
+    <br/>
+    <h1>Cube Calculator</h1>
+    <br/>
+    <img class = "shapes" src="images/cube.png" alt="cube">
+    <br/>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Edge Length" min = 0 id="cubeSurfaceLength">
+    <button class = "btn btn-primary calculate-group" onClick = "cubeSurface()">Calculate</button>
+    <br/>
+    <button id = "cubeSurfaceAnswer" type = "button" class = "btn btn-light border border-dark">Answer</button>
+    </center>
+</div>
+<!-- Cylinder Surface Area Calculator -->
+<div style = "padding: 3%">
+    <center>
+    <br/>
+    <h1>Cyclinder Calculator</h1>
+    <br/>
+    <img class = "shapes" src="images/cylinder.png" alt="cylinder">
+    <br/>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Base Radius" min = 0 id="cylinderSurfaceRadius">
+    <input type="number" class="btn-group" placeholder = "Height" min = 0 id="cylinderSurfaceHeight">
+    <button class = "btn btn-primary calculate-group" onClick = "cylinderSurface()">Calculate</button>
+    <br/>
+    <button id = "cylinderTopSurfaceAnswer" type = "button" class = "btn btn-light border border-dark">Answer</button>
+    <br/>
+    <button id = "cylinderBottomSurfaceAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    <br/>
+    <button id = "cylinderLateralSurfaceAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    <br/>
+    <button id = "cylinderTotalSurfaceAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+</div>
+<!-- Rectangular Prism Surface Area Calculator -->
+<div style = "padding: 3%">
+    <center>
+    <br/>
+    <h1>Rectangular Prism Calculator</h1>
+    <br/>
+    <img class = "shapes" src="images/rectangularprism.png" alt="rectangularprism">
+    <br/>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Length" min = 0 id="rectangularPrismSurfaceLength">
+    <input type="number" class="btn-group" placeholder = "Width" min = 0 id="rectangularPrismSurfaceWidth">
+    <input type="number" class="btn-group" placeholder = "Height" min = 0 id="rectangularPrismSurfaceHeight">
+    <button class = "btn btn-primary calculate-group" onClick = "rectangularPrismSurface()">Calculate</button>
+    <br/>
+    <button id = "rectangularPrismAnswer" type = "button" class = "btn btn-light border border-dark">Answer</button>
+    </center>
+</div>
+<!-- Capsule Surface Area Calculator -->
+<div style = "padding: 3%">
+    <center>
+    <br/>
+    <h1>Capsule Calculator</h1>
+    <br/>
+    <img class = "shapes" src="images/capsule.png" alt="capsule">
+    <br/>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Base Radius" min = 0 id="capsuleSurfaceRadius">
+    <input type="number" class="btn-group" placeholder = "Height" min = 0 id="capsuleSurfaceHeight">
+    <button class = "btn btn-primary calculate-group" onClick = "capsuleSurface()">Calculate</button>
+    <br/>
+    <button id = "capsuleTopSurfaceAnswer" type = "button" class = "btn btn-light border border-dark">Answer</button>
+    <br/>
+    <button id = "capsuleBottomSurfaceAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    <br/>
+    <button id = "capsuleLateralSurfaceAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    <br/>
+    <button id = "capsuleTotalSurfaceAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+</div>
+<!-- Square Pyramid Surface Area Calculator -->
+<div style = "padding: 3%">
+    <center>
+    <br/>
+    <h1>Square Pyramid Calculator</h1>
+    <br/>
+    <img class = "shapes" src="images/squarePyramid.png" alt="squarePyramid">
+    <br/>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Base Edge" min = 0 id="squarePyramidSurfaceEdge">
+    <input type="number" class="btn-group" placeholder = "Height" min = 0 id="squarePyramidSurfaceHeight">
+    <button class = "btn btn-primary calculate-group" onClick = "squarePyramidSurface()">Calculate</button>
+    <br/>
+    <button id = "squarePyramidBaseSurfaceAnswer" type = "button" class = "btn btn-light border border-dark">Answer</button>
+    <br/>
+    <button id = "squarePyramidLateralSurfaceAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    <br/>
+    <button id = "squarePyramidTotalSurfaceAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+</div>
+<div>
+<script>
+    // Sphere Surface Area Calculator
+    function sphereSurface(){
+        var sphereSurfaceRadius = $("#sphereSurfaceRadius").val()
+
+        var sphereSurfaceResult = 4 * Math.PI * Math.pow(sphereSurfaceRadius, 2)
+        if(!isNaN(sphereSurfaceResult)){
+            $("#sphereSurfaceAnswer").html("The surface area is " + sphereSurfaceResult)
+        }
+        if (sphereSurfaceRadius <= 0){
+            $("#sphereSurfaceAnswer").html("All values must be positive!")
+        }
+    }
+    // Cone Surface Area Calculator
+    function coneSurface(){
+        var coneSurfaceRadius = $("#coneSurfaceRadius").val()
+        var coneSurfaceHeight = $("#coneSurfaceHeight").val()
+
+        var coneBaseResult = Math.PI * Math.pow(coneSurfaceRadius, 2)
+        var coneLateralResult = Math.PI * coneSurfaceRadius * Math.sqrt(Math.pow(coneSurfaceRadius,2) + Math.pow(coneSurfaceHeight,2))
+        var coneTotalResult = coneBaseResult + coneLateralResult
+
+        if(!isNaN(coneBaseResult)){
+            $("#coneBaseAnswer").html("The base surface area is " + coneBaseResult)
+        }
+        if(!isNaN(coneLateralResult)){
+            $("#coneLateralAnswer").html("The lateral surface area is " + coneLateralResult)
+        }
+        if(!isNaN(coneTotalResult)){
+            $("#coneSurfaceAnswer").html("The total surface area is " + coneTotalResult)
+        }
+
+        if (coneSurfaceRadius <= 0 || coneSurfaceHeight <= 0){
+            $("#coneSurfaceAnswer").html("All values must be positive!")
+            $("#coneBaseAnswer").html("All values must be positive!")
+            $("#coneLateralAnswer").html("All values must be positive!")
+        }
+    }
+    // Cube Surface Area Calculator
+    function cubeSurface(){
+        var cubeSurfaceLength = $("#cubeSurfaceLength").val()
+
+        var cubeSurfaceResult = 6 * Math.pow(cubeSurfaceLength, 2)
+        if(!isNaN(cubeSurfaceResult)){
+            $("#cubeSurfaceAnswer").html("The surface area is " + cubeSurfaceResult);
+        }
+        if (cubeSurfaceLength <= 0){
+            $("#cubeSurfaceAnswer").html("All values must be positive!");
+        }
+    }
+    // Cylinder Surface Area Calculator
+    function cylinderSurface(){
+        var cylinderSurfaceRadius = $("#cylinderSurfaceRadius").val()
+        var cylinderSurfaceHeight = $("#cylinderSurfaceHeight").val()
+
+        var topSurfaceResult = Math.PI * Math.pow(cylinderSurfaceRadius, 2)
+        var bottomSurfaceResult = Math.PI * Math.pow(cylinderSurfaceRadius, 2)
+        var lateralSurfaceResult = 2 * Math.PI * cylinderSurfaceRadius * cylinderSurfaceHeight
+        var totalSurfaceResult = topSurfaceResult + bottomSurfaceResult + lateralSurfaceResult
+
+        if(!isNaN(topSurfaceResult)){
+            $("#cylinderTopSurfaceAnswer").html("The base surface area is " + topSurfaceResult)
+        }
+        if(!isNaN(bottomSurfaceResult)){
+            $("#cylinderBottomSurfaceAnswer").html("The lateral surface area is " + bottomSurfaceResult)
+        }
+        if(!isNaN(lateralSurfaceResult)){
+            $("#cylinderLateralSurfaceAnswer").html("The total surface area is " + lateralSurfaceResult)
+         }
+        if(!isNaN(totalSurfaceResult)){
+            $("#cylinderTotalSurfaceAnswer").html("The total surface area is " + totalSurfaceResult)
+        }
+        if (cylinderSurfaceRadius <= 0 || cylinderSurfaceHeight <= 0){
+            $("#cylinderTopSurfaceAnswer").html("All values must be positive!")
+            $("#cylinderBottomSurfaceAnswer").html("All values must be positive!")
+            $("#cylinderLateralSurfaceAnswer").html("All values must be positive!")
+            $("#cylinderTotalSurfaceAnswer").html("All values must be positive!")
+        }
+    }
+    // Rectangular Prism Surface Area Calculator
+    function rectangularPrismSurface(){
+        var rectangularPrismSurfaceHeight = $("#rectangularPrismSurfaceHeight").val()
+        var rectangularPrismSurfaceWidth = $("#rectangularPrismSurfaceWidth").val()
+        var rectangularPrismSurfaceLength = $("#rectangularPrismSurfaceLength").val()
+
+        var rectangularPrismSurfaceResult = 2 * (rectangularPrismSurfaceWidth * rectangularPrismSurfaceLength + rectangularPrismSurfaceHeight * rectangularPrismSurfaceLength + rectangularPrismSurfaceHeight * rectangularPrismSurfaceWidth)
+        if(!isNaN(rectangularPrismSurfaceResult)){
+            $("#rectangularPrismAnswer").html("The surface area is " + rectangularPrismSurfaceResult)
+        }
+        if (rectangularPrismSurfaceHeight <= 0 || rectangularPrismSurfaceWidth <= 0 || rectangularPrismSurfaceLength <= 0){
+            $("#rectangularPrismAnswer").html("All values must be positive!")
+        }
+    }
+    // Capsule Surface Area Calculator
+    function capsuleSurface(){
+        var capsuleSurfaceRadius = $("#capsuleSurfaceRadius").val()
+        var capsuleSurfaceHeight = $("#capsuleSurfaceHeight").val()
+
+        var topSurfaceResult = 2 * Math.PI * Math.pow(capsuleSurfaceRadius, 2)
+        var bottomSurfaceResult = topSurfaceResult
+        var lateralSurfaceResult = 2 * Math.PI * capsuleSurfaceRadius * capsuleSurfaceHeight
+        var totalSurfaceResult = topSurfaceResult + bottomSurfaceResult + lateralSurfaceResult
+
+        if(!isNaN(topSurfaceResult)){
+            $("#capsuleTopSurfaceAnswer").html("The base surface area is " + topSurfaceResult)
+        }
+        if(!isNaN(bottomSurfaceResult)){
+            $("#capsuleBottomSurfaceAnswer").html("The lateral surface area is " + bottomSurfaceResult)
+        }
+        if(!isNaN(lateralSurfaceResult)){
+            $("#capsuleLateralSurfaceAnswer").html("The total surface area is " + lateralSurfaceResult)
+        }
+        if(!isNaN(totalSurfaceResult)){
+            $("#capsuleTotalSurfaceAnswer").html("The total surface area is " + totalSurfaceResult)
+        }
+        if (capsuleSurfaceRadius <= 0 || capsuleSurfaceHeight <= 0){
+            $("#capsuleTopSurfaceAnswer").html("All values must be positive!")
+            $("#capsuleBottomSurfaceAnswer").html("All values must be positive!")
+            $("#capsuleLateralSurfaceAnswer").html("All values must be positive!")
+            $("#capsuleTotalSurfaceAnswer").html("All values must be positive!")
+        }
+    }
+    // Square Pyramid Surface Area Calculator
+    function squarePyramidSurface(){
+        var squarePyramidSurfaceEdge = $("#squarePyramidSurfaceEdge").val()
+        var squarePyramidSurfaceHeight = $("#squarePyramidSurfaceHeight").val()
+
+        var baseSurfaceResult = Math.pow(squarePyramidSurfaceEdge, 2)
+        var lateralSurfaceResult = 2 * squarePyramidSurfaceEdge * Math.sqrt(Math.pow(squarePyramidSurfaceEdge/2, 2) + Math.pow(squarePyramidSurfaceHeight, 2))
+        var totalSurfaceResult = baseSurfaceResult + lateralSurfaceResult
+
+        if(!isNaN(baseSurfaceResult)){
+            $("#squarePyramidBaseSurfaceAnswer").html("The base surface area is " + baseSurfaceResult)
+        }
+        if(!isNaN(lateralSurfaceResult)){
+            $("#squarePyramidLateralSurfaceAnswer").html("The lateral surface area is " + lateralSurfaceResult)
+        }
+        if(!isNaN(totalSurfaceResult)){
+            $("#squarePyramidTotalSurfaceAnswer").html("The total surface area is " + totalSurfaceResult)
+        }
+        if (squarePyramidSurfaceEdge <= 0 || squarePyramidSurfaceHeight <= 0){
+            $("#squarePyramidBaseSurfaceAnswer").html("All values must be positive!")
+            $("#squarePyramidLateralSurfaceAnswer").html("All values must be positive!")
+            $("#squarePyramidTotalSurfaceAnswer").html("All values must be positive!")
+      }
+    }
+</script>
+</div>
+<%- include("partials/footer") -%>

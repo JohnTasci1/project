@@ -1,0 +1,236 @@
+<%- include("partials/header") -%>
+<!-- Rectangle Area Calculator -->
+<div style = "padding: 3%">
+    <center>
+    <h1>Area Calculators</h1>
+    <p>The following volume calculators are specially made for different shapes</p>
+    <br/>
+    <br/>
+    <h2>Rectangle Calculator</h2>
+    <br/>
+    <img class = "shapes" src="images/rectangle.png" alt="rectangle">
+    <br/>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Length" min = 0 id="rectangleAreaLength">
+    <input type="number" class="btn-group" placeholder = "Width" min = 0 id="rectangleAreaWidth">
+    <button class = "btn btn-primary calculate-group" onClick = "rectangleArea()">Calculate</button>
+    <p></p>
+    <button id = "rectangleAreaAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+</div>
+<!-- Triangle Area Calculator -->
+<div style = "padding: 3%">
+    <center>
+    <h2>Triangle Calculator</h2>
+    <img class = "shapes" src="images/triangle.png" alt="triangle">
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Base" min = 0 id="triangleAreaBase">
+    <input type="number" class="btn-group" placeholder = "Height" min = 0 id="triangleAreaHeight">
+    <button class = "btn btn-primary calculate-group" onClick = "triangleArea()">Calculate</button>
+    <p></p>
+    <button id = "triangleAreaAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+</div>
+<!-- Trapezoid Area Calculator -->
+<div style = "padding: 3%">
+    <center>
+    <h2>Trapezoid Calculator</h2>
+    <br/>
+    <img class = "shapes" src="images/trapezoid.png" alt="trapezoid">
+    <br/>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Base1" min = 0 id="trapezoidAreaBase1">
+    <input type="number" class="btn-group" placeholder = "Base2" min = 0 id="trapezoidAreaBase2">
+    <input type="number" class="btn-group" placeholder = "Height" min = 0 id="trapezoidAreaHeight">
+    <button class = "btn btn-primary calculate-group" onClick = "trapezoidArea()">Calculate</button>
+    <p></p>
+    <button id = "trapezoidAreaAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+</div>
+<!-- Circle Area Calculator -->
+<div style = "padding: 3%">
+    <center>
+    <h2>Circle Calculator</h2>
+    <br/>
+    <img class = "shapes" src="images/circle.png" alt="circle">
+    <br/>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Radius" min = 0 id="circleAreaRadius">
+    <button class = "btn btn-primary calculate-group" onClick = "circleArea()">Calculate</button>
+    <p></p>
+    <button id = "circleAreaAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+</div>
+<!-- Sector Area Calculator -->
+<div style = "padding: 3%">
+    <center>
+    <h2>Sector Calculator</h2>
+    <br/>
+    <img class = "shapes" src="images/sector.png" alt="sector">
+    <br/>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Radius" min = 0 id="sectorAreaRadius">
+    <input type="number" class="btn-group" placeholder = "Angle" min = 0 id="sectorAreaAngle" >
+    <button class = "btn btn-primary calculate-group" onClick = "sectorArea()">Calculate</button>
+    <p></p>
+    <button id = "sectorAreaAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+</div>
+<!-- Ellipse Area Calculator -->
+<div style = "padding: 3%">
+    <center>
+    <h2>Ellipse Calculator</h2>
+    <br/>
+    <img class = "shapes" src="images/ellipse.svg" alt="ellipse">
+    <br/>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Semi-major Axes" min = 0 id="ellipseAreaMajor">
+    <input type="number" class="btn-group" placeholder = "Semi-minor Axes" min = 0 id="ellipseAreaMinor">
+    <button class = "btn btn-primary calculate-group" onClick = "ellipseArea()">Calculate</button>
+    <p></p>
+    <button id = "ellipseAreaAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+</div>
+<!-- Parallelogram Area Calculator -->
+<div style = "padding: 3%">
+    <center>
+    <h2>Parallelogram Calculator</h2>
+    <br/>
+    <img class = "shapes" src="images/parallelogram.png" alt="parallelogram">
+    <br/>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Base" min = 0 id="parallelogramAreaBase">
+    <input type="number" class="btn-group" placeholder = "Height" min = 0 id="parallelogramAreaHeight">
+    <button class = "btn btn-primary calculate-group" onClick = "parallelogramArea()">Calculate</button>
+    <p></p>
+    <button id = "parallelogramAreaAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+</div>
+<!-- Square Area Calculator -->
+<div style = "padding: 3%">
+    <center>
+    <h2>Square Calculator</h2>
+    <img class = "shapes" src="images/square.png" alt="square">
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Length" min = 0 id="squareAreaLength">
+    <button class = "btn btn-primary calculate-group" onClick = "squareArea()">Calculate</button>
+    <p></p>
+    <button id = "squareAreaAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+</div>
+<div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script>
+    //Rectangle Area
+    function rectangleArea(){
+        var rectangleAreaResult = $("#rectangleAreaWidth").val() * $("#rectangleAreaLength").val()      
+        if(!isNaN(rectangleAreaResult)){
+                $("#rectangleAreaAnswer").html("Rectangle Area: " + rectangleAreaResult + " units")
+        } 
+        if ($("#rectangleAreaLength").val() <= 0 || $("#rectangleAreaWidth").val() <= 0){
+                $("rectangleAreaAnswer").html("All values must be positive!")
+        } 
+    }
+    //Triangle Area
+    function triangleArea(){
+        var triangleAreaResult = $("#triangleAreaBase").val() * $("#triangleAreaHeight").val() * 1/2
+        var unit = ""
+        if (triangleAreaResult > 1){
+            unit = " units"
+        } else {
+            unit = " unit"
+        }
+        if(!isNaN(triangleAreaResult)){
+                 $("#triangleAreaAnswer").html("Triangle Area: " + triangleAreaResult + unit)
+        }
+        if ($("#triangleAreaBase").val() <= 0 || $("#triangleAreaHeight").val() <= 0){
+                $("#triangleAreaAnswer").html("All values must be positive!")
+        }
+    }
+    //Trapezoid Area
+    function trapezoidArea(){
+        var trapezoidAreaResult = (Number($("#trapezoidAreaBase1").val()) + Number($("#trapezoidAreaBase2").val())) / 2 * Number($("#trapezoidAreaHeight").val())
+        var unit = ""
+        if (trapezoidAreaResult > 1){
+            unit = " units"
+        } else {
+            unit = " unit"
+        }
+        if(!isNaN(trapezoidAreaResult)){
+            $("#trapezoidAreaAnswer").html("Trapezoid Area: " + trapezoidAreaResult + unit)
+        }
+        if ($("#trapezoidAreaBase1").val() <= 0 || $("#trapezoidAreaBase2").val() <= 0 || $("#trapezoidAreaHeight").val() <= 0){
+            $("#trapezoidAreaAnswer").html("All values must be positive!")
+        }
+    }
+ //Circle Area Calculator 
+    function circleArea(){
+        var circleAreaResult = Math.PI * (Math.pow($("#circleAreaRadius").val(), 2))
+        var unit = ""
+        if (circleAreaResult > 1){
+            unit = " units"
+        } else {
+            unit = " unit"
+        }
+        if(!isNaN(circleAreaResult)){
+             $("#circleAreaAnswer").html("The area is " + circleAreaResult + unit)
+        } 
+        if ($("#circleAreaRadius").val() <= 0){
+            $("#circleAreaAnswer").html("All values must be positive!")
+        }
+    }
+//Sector Area Calculator
+function sectorArea(){
+        var sectorAreaResult = $("#sectorAreaAngle").val() / 360 * Math.PI * Math.pow($("#sectorAreaRadius").val(), 2)
+        var unit = ""
+        if (sectorAreaResult > 1){
+            unit = " units"
+        } else {
+            unit = " unit"
+        }
+        if(!isNaN(sectorAreaResult)){
+            $("#sectorAreaAnswer").html("The area is " + sectorAreaResult + unit)
+        }
+        if ($("#sectorAreaRadius").val() <= 0 || $("#sectorAreaAngle").val() <= 0){
+            $("sectorAreaAnswer").html("All values must be positive!")
+        } 
+    }
+    //Ellipse Area Calculator
+function ellipseArea(){
+        var ellipseAreaResult = Math.PI * $("#ellipseAreaMajor").val() * $("#ellipseAreaMinor").val()
+        var unit = ""
+        if (ellipseAreaResult > 1){unit = " units"} else {unit = " unit"}
+        if(!isNaN(ellipseAreaResult)){
+            $("#ellipseAreaAnswer").html("The area is " + ellipseAreaResult + unit)
+        }
+        if ($("#ellipseAreaMajor").val() <= 0 || $("#ellipseAreaMinor").val() <= 0){
+            $("#ellipseAreaAnswer").html("All values must be positive!")
+        }
+    }
+        //Parallelogram Area Calculator
+function parallelogramArea(){
+        var parallelogramAreaResult = $("#parallelogramAreaBase").val() *  $("#parallelogramAreaHeight").val()
+        var unit = ""
+        if (parallelogramAreaResult > 1){unit = " units"} else {unit = " unit"}
+        if(!isNaN(parallelogramAreaResult)){
+             $("#parallelogramAreaAnswer").html("The area is " + parallelogramAreaResult + unit)
+        }
+        if ( $("#parallelogramAreaBase").val() <= 0 || $("#parallelogramAreaHeight").val() <= 0){
+             $("#parallelogramAreaAnswer").html("All values must be positive!")
+        }
+    }
+        //Square Area Calculator
+function squareArea(){
+        var squareAreaResult = Math.pow($("#squareAreaLength").val(), 2)
+        var unit = ""
+        if (squareAreaResult > 1){unit = " units"} else {unit = " unit"}
+        if(!isNaN(squareAreaResult)){
+            $("#squareAreaAnswer").html("The area is " + squareAreaResult + unit)
+        }
+        if ($("#squareAreaLength").val() <= 0){
+            $("#squareAreaAnswer").html("Square Length Must Be Positive!")
+        }
+    }
+</script>
+</div>
+<%- include("partials/footer") -%>

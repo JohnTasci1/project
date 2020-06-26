@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator Shop</title>
+ <!--CSS Stylesheets-->
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+ <link rel="stylesheet" href="public/css/styles.css">
+ <link rel=“stylesheet” href=“https://use.fontawesome.com/releases/v5.5.0/css/all.css” integrity=“sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU” crossorigin=“anonymous”>
+ <!--Font Awesome-->
+ <script src="https://kit.fontawesome.com/7097d8f2dd.js" crossorigin="anonymous"></script>
+
+ <!-- Bootstrap Scripts-->
+ <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+ <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+  </head>
+<body>
+  <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand text-light" href="/">Calculators</a>
+    <button class="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link text-light" href="/">Home<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="/math-calculators">Math</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="/finance-calculators">Finance</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-light" href="/education-calculators">Education</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<div id = "topLayer" class = "container-fluid">
+    <h1 class="text-white topLayerText" >Get Results Quicker With The Best Calculators</h1>
+   <br>
+    <p  class="text-white topLayerText" >Calculate for free</p>
+    <nav class="navbar navbar-light">
+        <form class="form-inline mx-auto searchBar">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-secondary my-2 my-sm-0 bg-light searchButton" type="submit">Search</button>
+          </form>
+      </nav>
+</div>
+<div>
+    <h3 class = "numberOne">#1 Rated Calculator Worldwide</h3>
+</div>
+
+<br><br><br>
+<!-- Grouped Cards -->
+<div class="card-group allCards">
+    <div onclick="location.href='/math-calculators';" class="card">
+      <img src="images/calculator.png" class="card-img-top mx-auto" alt="calculator">
+      <div class="card-body">
+        <h4 class="card-title">Math</h4>
+        <p class="card-text">Need help with homework? We got you. Our calculators will help you complete homework in ease.</p>
+        <a class="btn btn-primary" href="/math-calculators" role="button">Math</a>
+    </div>
+    </div>
+    <div onclick="location.href='/finance-calculators';" class="card">
+      <img src="images/financecardimage.png" class="card-img-top mx-auto" alt="finance">
+      <div class="card-body">
+        <h4 class="card-title">Finance</h4>
+        <p class="card-text">Humans make mistakes, calculators don't. Track your finances to see if you're on the right track.</p>
+        <a class="btn btn-primary" href="/finance-calculators" role="button">Finance</a>
+    </div>
+    </div>
+    <div onclick="location.href='/education-calculators';" class="card">
+      <img src="images/graduationhat.png" class="card-img-top mx-auto" alt="...">
+      <div class="card-body">
+        <h4 class="card-title">Education</h4>
+        <p class="card-text">What's my grade? What grade do I need? What's my GPA? Don't worry we got you covered.</p>
+        <a class="btn btn-primary" href="/education-calculators" role="button">Education</a>
+    </div>
+    </div>
+  </div>
+<!-- Footer -->
+<footer class="page-footer font-small indigo">
+
+    <!-- Footer Links -->
+    <div class="container text-center text-md-left">
+
+      <!-- Grid row -->
+      <div class="row">
+
+        <!-- Grid column -->
+        <div class="col-md-4 mx-auto">
+
+          <!-- Links -->
+          <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Useful Links</h5>
+
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!">About Us</a>
+            </li>
+            <li>
+              <a href="#!">Contact Us</a>
+            </li>
+            <li>
+              <a href="#!">Suggestions?</a>
+            </li>
+            <li>
+              <a href="#!">Blog</a>
+            </li>
+          </ul>
+
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none">
+
+        <!-- Grid column -->
+        <div class="col-md-4 mx-auto">
+
+          <!-- Links -->
+          <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Follow Us</h5>
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!">Facebook</a>
+            </li>
+            <li>
+              <a href="#!">Instagram</a>
+            </li>
+            <li>
+              <a href="#!">Twitter</a>
+            </li>
+            <li>
+              <a href="#!">Tik Tok</a>
+            </li>
+          </ul>
+
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none">
+
+        <!-- Grid column -->
+        <div class="col-md-4 mx-auto">
+          <h5 class="font-weight-bold text-uppercase mt-3 mb-4">Useful Links</h5>
+          <!-- Links -->
+          <ul class="list-unstyled">
+            <li>
+              <a href="#!">Calculator List</a>
+            </li>
+            <li><a href="#!">Blog</a></li>
+            <li><a href="#!">Help</a></li>
+            <li> <a href="#!">Privacy Policy</a></li>
+          </ul>
+
+        </div>
+        <!-- Grid column -->
+
+        <hr class="clearfix w-100 d-md-none">
+
+        <!-- Grid column -->
+
+      </div>
+      <!-- Grid row -->
+
+    </div>
+    <!-- Footer Links -->
+
+    <!-- Copyright -->
+    <div class="footer-copyright text-center py-3">© <%= new Date().getFullYear(); %>  Copyright:
+      <a href="#">www.calculator.com</a>
+      <p>All rights reserved</p>
+    </div>
+    <!-- Copyright -->
+
+  </footer>
+  <!-- Footer -->
+  </body>
+  </html>

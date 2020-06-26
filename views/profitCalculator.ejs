@@ -1,0 +1,64 @@
+<%- include("partials/header") -%>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <h1>Profit Calculator</h1>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Revenue/Price $" id="revenue">
+    <input type="number" class="btn-group" placeholder = "Gross Margin %" id="grossMargin">
+    
+    <button class = "btn btn-primary calculate-group" onClick = "profitCalculator()">Calculate</button>
+    <br/>
+    <button id = "error" type = "button" class = "btn btn-light border border-dark d-none"> Answer </button>
+    </center>
+    </div>
+</div>
+<div class ="w-auto">
+    <center>
+        <!-- First Table -->
+<table class = "table table-bordered d-none">
+    <thead class= "table-dark">
+        <tr style = "text-align: center">
+            <th style = " width:33%" scope="col">Gross Profit</th>
+            <th style = " width:34%" scope="col">Cost</th>
+            <th style = " width:33%" scope="col">Markup</th>
+        </tr>
+    </thead>
+    <tr style = "text-align: right">
+        <td class = "gProfit"></td>
+        <td class = "cost"></td> 
+        <td class = "markup"></td> 
+    </tr>
+</table>
+</center>
+</div>
+<div>
+<script>
+    function profitCalculator(){
+    var gMargin = $("#grossMargin").val() * 0.01
+    var cost = $("#revenue").val() - $("#revenue").val() * gMargin
+    var grossProfit = $("#revenue").val() * gMargin
+    var markup = grossProfit / cost * 100
+    
+    $(".gProfit").html("$" + Math.round(grossProfit * 100) / 100)
+    $(".cost").html("$" + Math.round(cost * 100) / 100)
+    $(".markup").html(Math.round(markup * 100) / 100 + "%")
+
+if($("#grossMargin").val() <= 0 || $("#revenue").val() <= 0){
+        $("#error").removeClass("d-none")
+        $("#error").html("All values must be positive")
+        $("table").removeClass("d-none")
+        $("td").html('-')
+    } else if ($("#grossMargin").val() >= 100) {
+        $("#error").removeClass("d-none")
+        $("#error").html("Gross margin must be less than 100")
+        $("table").removeClass("d-none")
+        $("td").html('-')
+    } else {
+        $("table").removeClass("d-none")
+        $("error").addClass("d-none")
+    }
+}
+</script>
+</div>
+<%- include("partials/footer") -%>

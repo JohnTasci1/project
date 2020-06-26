@@ -1,0 +1,75 @@
+<%- include("partials/header") -%>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <h1>Tip Calculator</h1>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Bill Amount: $" id="billAmount">
+    <input type="number" class="btn-group" placeholder = "Tip Percent: %" id="tipPercent">
+    <input type="number" class="btn-group" onkeydown="handleInput(event)"  placeholder = "People:" id="divideBy">
+    <button class = "btn btn-primary calculate-group" onClick = "tip()">Calculate</button>
+    <br/>
+    <button id = "error" type = "button" class = "btn btn-light border border-dark d-none"> Answer </button>
+    </center>
+    </div>
+</div>
+<div class = "w-auto">
+    <center>
+<table class = "table table-bordered d-none">
+    <thead class= "table-dark">
+        <tr style = "text-align: center">
+            <th scope="col">Total (Bill + Tip)</th>
+            <th scope="col">Tip Total</th>
+            <th scope="col">Each Person Tips</th>
+            <th scope="col">Total (Bill + Tip) Each Person</th>
+            <th scope="col">Total Without Tip</th>
+        </tr>
+    </thead>
+    <tr style = "text-align: right">
+        <td class = "total"></td>
+        <td class = "tip"></td>
+        <td class = "eachTip"></td> 
+        <td class = "total1"></td> 
+        <td class = "total2"></td>
+    </tr>
+</table>
+</center>
+</div>
+<div>
+<script>
+    //doesn't allow decimal
+    const handleInput = (e) => {
+  if(e.keyCode === 190) {
+    e.preventDefault(); 
+  }
+}
+    function tip(){
+        var billAmount = $("#billAmount").val()
+        var tipPercent = $("#tipPercent").val()
+        var divideBy = $("#divideBy").val()
+
+        var tipT = billAmount * (tipPercent / 100)
+        var totalPrice = Number(billAmount) + Number(tipT)
+        var tipPerPerson = tipT / divideBy
+        var paymentPerPerson = (Number(totalPrice) + Number(tipT)) / divideBy
+        var noTip = Number(totalPrice)/ divideBy
+
+    $(".total").html("$" + Math.round(totalPrice * 100) / 100)
+    $(".tip").html("$" + Math.round(tipT * 100) / 100)
+    $(".eachTip").html("$" + Math.round(tipPerPerson * 100) / 100)
+    $(".total1").html("$" + Math.round(paymentPerPerson * 100) / 100)
+    $(".total2").html("$" + Math.round(noTip * 100) / 100)
+
+if (billAmount <= 0 || tipPercent <= 0 || divideBy < 1){
+    $("td").html("-")
+    $("#error").removeClass("d-none")
+    $("table").removeClass("d-none")
+    $("#error").html("Negative values are not valid")
+} else {
+    $("table").removeClass("d-none")
+    $("#error").addClass("d-none")
+}
+    }
+</script>
+</div>
+<%- include("partials/footer") -%>

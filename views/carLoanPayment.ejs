@@ -1,0 +1,82 @@
+<%- include("partials/header") -%>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <h1>Advanced Auto Loan Calculator</h1>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Vehicle Price" id="loanAmount">
+    <input type="number" class="btn-group" placeholder = "Sales Tax %" id="tax">
+    <input type="number" class="btn-group" placeholder = "Down Payment" id="downPayment">
+    <input type="number" class="btn-group" placeholder = "Trade-In Value" id="tradeValue">
+    <input type="number" class="btn-group" placeholder = "Loan Monthly Term" id="loanTerm">
+    <input type="number" class="btn-group" placeholder = "Annual Interest Rate" id="interestRate">
+    
+    <button class = "btn btn-primary calculate-group" onClick = "autoLoanPayment()" id = "simpleLoanCalculate">Calculate</button>
+    <br/>
+    <button id = "error" type = "button" class = "btn btn-light border border-dark d-none"></button>
+    </center>
+    </div>
+</div>
+<div class ="w-auto">
+    <center>
+        <!-- First Table -->
+<table class = "table table-bordered d-none">
+    <thead class= "table-dark">
+        <tr style = "text-align: center">
+            <th scope="col">Monthly Loan</th>
+            <th scope="col">Principal Loan</th>
+            <th scope="col">Total Loan Payments</th>
+        </tr>
+    </thead>
+    <tr style = "text-align: right">
+        <td class = "monthly"></td>
+        <td class = "principal"></td> 
+        <td class = "total"></td>
+    </tr>
+</table>
+</center>
+</div>
+<div>
+<script>
+function autoLoanPayment(){
+    var tax = $("#tax").val()
+    var tradeValue = $("#tradeValue").val()
+    var downPayment = $("#downPayment").val()
+    var loanAmount = $("#loanAmount").val()
+    var loanTerm = $("#loanTerm").val()
+    var interestRate = $("#interestRate").val()
+
+    var i = interestRate * 0.01 / 12
+    var carValue = loanAmount - downPayment - tradeValue
+    var taxValue = tax * 0.01 
+    var calculate = (carValue * i * Math.pow(1 + i, loanTerm)) / (Math.pow(1 + i, loanTerm) - 1) + (loanAmount * taxValue)
+    var principal = carValue + loanAmount * taxValue
+    var totalPayment = Math.round(calculate * 100) / 100 * Math.round(loanTerm * 100) / 100
+
+    $(".monthly").html("$" + Math.round(calculate * 100) / 100)
+    $(".principal").html("$" + Math.round(principal * 100) / 100)
+    $(".total").html("$" + Math.round(totalPayment * 100) / 100)
+
+    if (carValue < 0){
+        $("table").removeClass("d-none");
+        $("td").html("-")
+        $("#error").removeClass("d-none");
+        $("#error").html("Trade value or down payment can't be more than car price")
+    } else if(loanAmount <= 0 || i < 0 || loanTerm <= 0 || tax < 0 || downPayment < 0 || tradeValue < 0){
+        $("table").removeClass("d-none");
+        $("td").html("-")
+        $("#error").removeClass("d-none");
+        $("#error").html("Values can't be negative")
+    } else if(calculate < 0){
+        $("table").removeClass("d-none");
+        $("td").html("-")
+        $("#error").removeClass("d-none");
+        $("#error").html("You have calculated a negative value, change your values")
+    } else {
+        $("table").removeClass("d-none");
+        $("#error").addClass("d-none")
+    }
+}
+</script>
+</div>
+<%- include("partials/footer") -%>

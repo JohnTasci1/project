@@ -1,0 +1,69 @@
+<%- include("partials/header") -%>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <h1>Stock Return Calculator</h1>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Shares" id="shares">
+    <input type="number" class="btn-group" placeholder = "Bought Price" id="boughtPrice">
+    <input type="number" class="btn-group" placeholder = "Sold Price" id="soldPrice">
+    <button class = "btn btn-primary calculate-group" onClick = "stockProfit()" id = "stockCalculate">Calculate</button>
+    <br/>
+    <button id = "error" type = "button" class = "btn btn-light border border-dark d-none"> Answer </button>
+    </center>
+    </div>
+</div>
+<div class = "w-auto">
+    <center>
+<table class = "table table-bordered d-none">
+    <thead class= "table-dark">
+        <tr style = "text-align: center">
+            <th scope="col">Bought Price</th>
+            <th scope="col">Sold Price</th>
+            <th scope="col">Profit</th>
+            <th scope="col">Percent Return</th>
+        </tr>
+    </thead>
+    <tr style = "text-align: right">
+        <td class = "bought"></td>
+        <td class = "sold"></td>
+        <td class = "profit"></td> 
+        <td class = "percent"></td> 
+    </tr>
+</table>
+</center>
+</div>
+<div>
+<script>
+    function stockProfit(){
+    var soldPrice = $("#soldPrice").val()
+    var boughtPrice = $("#boughtPrice").val()
+    var shares = $("#shares").val()
+
+    var boughtTotal = shares * boughtPrice
+    var soldTotal = shares * soldPrice
+    var stockResult = shares * soldPrice - shares * boughtPrice
+
+    $(".bought").html("$" + Math.round(boughtTotal * 100) / 100)
+    $(".sold").html("$" + Math.round(soldTotal * 100) / 100)
+    $(".profit").html("$" + Math.round(stockResult * 100) / 100)
+    $(".percent").html(Math.floor(stockResult / boughtTotal * 100) + "%")
+
+    var profitResult = "Bought for: $" + Math.round(boughtTotal * 100) / 100 + "<br/> Sold for: $" + Math.round(soldTotal * 100) / 100 + "<br/> You made a profit of $" + Math.round(stockResult * 100) / 100 + "<br/> Percent Gain: " + (Math.floor(stockResult / boughtTotal * 100)) + "%"
+    var lossResult = "Bought for: $" + Math.round(boughtTotal * 100) / 100 + "<br/> Sold for: $" + Math.round(soldTotal * 100) / 100 + "<br/> You had a loss of -$" + Math.round(stockResult * 100) / 100 * -1 + "<br/> Percent Loss: " + (Math.floor(stockResult / boughtTotal * 100)) + "%"
+    if(!isNaN(stockResult)){
+        $("#stockAnswer").html(profitResult);
+    } 
+    if (soldPrice <= 0 || shares <= 0 || boughtPrice <= 0){
+        $("td").html("-")
+        $("#error").removeClass("d-none")
+        $("table").removeClass("d-none")
+        $("#error").html("Negative values are not valid")
+    } else {
+        $("table").removeClass("d-none")
+        $("#error").addClass("d-none")
+    }
+}
+</script>
+</div>
+<%- include("partials/footer") -%>

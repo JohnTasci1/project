@@ -1,0 +1,47 @@
+<%- include("partials/header") -%>
+<div style = "padding: 3%">
+<center>
+    <h1>Square Root Calculator</h1>
+    <p>Get the square root of any number you want!</p>
+    <input type="number" class = "btn-group" placeholder = "number" id = "squareRoot">
+    <button onClick ="getSquareRoot()" placeholder="Number"  class = "btn btn-primary calculate-group">Calculate</button>
+    <br/>
+    <button id = "rootAnswer" type = "button" class = "btn btn-light border border-dark">Answer</button>
+</center>
+<br>
+    <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+          when an unknown printer took a galley of type and scrambled it to make a type 
+          specimen book. It has survived not only five centuries, but also the leap into 
+          electronic typesetting, remaining essentially unchanged. It was popularised in 
+          the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+          and more recently with desktop publishing software like Aldus PageMaker including 
+          versions of Lorem Ipsum.
+    </p>
+    <p>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+         Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+          when an unknown printer took a galley of type and scrambled it to make a type 
+          specimen book. It has survived not only five centuries, but also the leap into 
+          electronic typesetting, remaining essentially unchanged. It was popularised in 
+          the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, 
+          and more recently with desktop publishing software like Aldus PageMaker including 
+          versions of Lorem Ipsum.
+    </p>
+</div>
+<div>
+ <script>
+    function getSquareRoot(){
+        var squareRoot = $("#squareRoot").val()
+        var result = parseFloat(Math.sqrt(squareRoot))
+        var negativeResult = parseFloat(Math.sqrt(squareRoot * -1))
+    if(!isNaN(result)){
+        $("#rootAnswer").html("The square root is " + result + " and " + result * -1)
+    } else if (squareRoot < 0){
+        $("#rootAnswer").html("The square root is " + negativeResult + "i")
+    }
+    } 
+</script>
+</div>
+<%- include("partials/footer") -%>

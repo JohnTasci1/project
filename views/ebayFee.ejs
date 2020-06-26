@@ -1,0 +1,83 @@
+<%- include("partials/header") -%>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <h1>2020 Ebay and Paypal Fee Calculator</h1>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Sold Price $" id="soldPrice">
+    <input type="number" class="btn-group" placeholder = "Item Cost $" id="itemCost">
+    <input type="number" class="btn-group" placeholder = "Shipping Cost $" id="shippingCost">
+    <input type="number" class="btn-group" placeholder = "Shipping Charge $" id="shippingCharge">
+    <input type="number" class="btn-group" placeholder = "Promoted Listing %" id="promoteListing">
+    <input type="number" class="btn-group" placeholder = "Selling Tax %" id="sellingTax">
+    <button class = "btn btn-primary calculate-group" onClick = "ebayFee()">Calculate</button>
+    <p></p>
+    <button id = "error" type = "button" class = "btn btn-light border border-dark d-none"></button>
+    </center>
+    </div>
+</div>
+<div class ="w-auto">
+    <center>
+        <!-- First Table -->
+<table class = "table table-bordered d-none">
+    <thead class= "table-dark">
+        <tr style = "text-align: center">
+            <th scope="col">Ebay Fee</th>
+            <th scope="col">PayPal Fee</th>
+            <th scope="col">Promotion</th>
+            <th scope="col">Profit</th>
+        </tr>
+    </thead>
+    <tr style = "text-align: right">
+        <td class = "ebayFee"></td>
+        <td class = "paypalFee"></td>
+        <td class = "promotion"></td> 
+        <td class = "profit"></td> 
+    </tr>
+</table>
+</center>
+</div>
+<div>
+    <script>
+        function ebayFee(){
+            var soldPrice = $("#soldPrice").val()
+            var itemCost = $("#itemCost").val()
+            var shippingCost = $("#shippingCost").val()
+            var shippingCharge = $("#shippingCharge").val()
+            var sellingTax = $("#sellingTax").val()
+            var promoteListing = $("#promoteListing").val()
+
+           var tax = (Number(soldPrice) + Number(shippingCharge)) * ((sellingTax / 100))
+           var ebayFeeCalc = (Number(soldPrice) + Number(shippingCharge)) * 0.10
+           var paypalCalc = (Number(soldPrice) + Number(shippingCharge)) * 0.029 + 0.30
+           var promote = Number(soldPrice) * Number((promoteListing / 100))
+           var profit = Number(soldPrice) - Number(itemCost) - Number(shippingCost) + Number(shippingCharge) + Number(tax) - Number(ebayFeeCalc) - Number(paypalCalc) - Number(promote)
+
+    $(".ebayFee").html("$" + Math.round(ebayFeeCalc * 100) / 100)
+    $(".paypalFee").html("$" + Math.round(paypalCalc * 100) / 100)
+    $(".promotion").html("$" + Math.round(promote * 100) / 100)
+    $(".profit").html("$" + Math.round(profit * 100) / 100)
+
+    if (soldPrice <= 0 || itemCost <= 0 || shippingCost < 0 || shippingCharge < 0 || sellingTax < 0 || promoteListing < 0){
+        $("#error").removeClass("d-none")
+        $("#error").html("Values can't be negative")
+        $("td").html("-")
+        $("table").removeClass("d-none");
+    } else if (sellingTax >=100 || promoteListing >= 100){
+        $("#error").removeClass("d-none")
+        $("#error").html("Percent values must be between 0-100")
+        $("td").html("-")
+        $("table").removeClass("d-none");
+    } else if (profit < 0){
+        $("#error").removeClass("d-none")
+        $("#error").html("Your goal is to make a profit")
+        $("table").removeClass("d-none");
+    } else if (profit >= 0){
+        $("#error").addClass("d-none")
+        $("table").removeClass("d-none");
+    }
+        }
+    </script>
+</div>
+
+<%- include("partials/footer") -%>

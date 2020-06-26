@@ -1,0 +1,64 @@
+<%- include("partials/header") -%>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <h1>Activity Method Depreciation Calculator</h1>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Asset Cost: $" id="assetCost">
+    <input type="number" class="btn-group" placeholder = "Salvage Value: $" id="salvageValue">
+    <input type="number" class="btn-group" placeholder = "Useful Units:" id="usefulUnits">
+    <input type="number" class="btn-group" placeholder = "Units Produced:" id="unitsProduced">
+    <button class = "btn btn-primary calculate-group" onClick = "activityDepreciation()">Calculate</button>
+    <br/>
+    <button id = "error" type = "button" class = "btn btn-light border border-dark d-none"></button>
+    </center>
+    </div>
+</div>
+<div class = "w-auto">
+    <center>
+        <!-- First Table -->
+<table class = "table table-bordered d-none">
+    <thead class= "table-dark">
+        <tr style = "text-align: center">
+            <th scope="col">Depreciation per Unit</th>
+            <th scope="col">Depreciation for Period</th>
+            <th scope="col">Depreciation Base</th>
+        </tr>
+    </thead>
+    <tr style = "text-align: right">
+        <td class = "dpu"></td>
+        <td class = "dfp"></td> 
+        <td class = "db"></td>
+    </tr>
+</table>
+</center>
+</div>
+<div>
+<script>
+    function activityDepreciation(){
+        var assetCost = $("#assetCost").val()
+        var salvageValue = $("#salvageValue").val()
+        var usefulUnits = $("#usefulUnits").val()
+        var unitsProduced = $("#unitsProduced").val()
+
+        var db = assetCost - salvageValue
+        var dpu = db / usefulUnits
+        var dfp = dpu * unitsProduced
+
+        $(".dpu").html("$" + Math.round(dpu * 100) / 100)
+        $(".dfp").html("$" + Math.round(dfp * 100) / 100)
+        $(".db").html("$" + Math.round(db * 100) / 100)
+    
+        if(assetCost <= 0 || salvageValue <= 0 || usefulUnits <= 0 || unitsProduced < 0){
+            $("#error").removeClass("d-none")
+            $("#error").html("Values can't be negative")
+            $("table").removeClass("d-none");
+            $("td").html("-")
+        } else {
+            $("table").removeClass("d-none");
+            $("#error").addClass("d-none")
+        }
+    }
+</script>
+</div>
+<%- include("partials/footer") -%>

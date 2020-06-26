@@ -1,0 +1,54 @@
+<%- include("partials/header") -%>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <h1>Final Grade Calculator</h1>
+    <p>This tool will determine what (percentage) you need on your final exam in order to get a certain grade in a class</p>
+    <br/>
+    <input type="number" class="btn-group" id="currentGrade" min = 0 placeholder="Current Grade %">
+    <input type="number" class="btn-group" id="goalGrade" min = 0 placeholder="You want at least %">
+    <input type="number" class="btn-group" id="finalWeight" min = 0 placeholder="Your final is worth %">
+    <button class = "btn btn-primary calculate-group" onClick = "final()">Calculate</button>
+    <br/>
+    <button id = "finalAnswer" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    <br/>
+    <p></p>
+    <p id = "joke"></p>
+    </center>
+    <br/>
+    </div>
+</div>
+<div>
+<script>
+    // Finale Grade Calculator
+    function final(){
+        var currentGrade = $("#currentGrade").val()
+        var goalGrade = $("#goalGrade").val()
+        var finalWeight = $("#finalWeight").val()
+
+        var finalResult = parseFloat(goalGrade - (1 - finalWeight * 0.01) * currentGrade) / (finalWeight * 0.01)
+        if(!isNaN(finalResult)){
+            $("#finalAnswer").html("You need a " + Math.round(finalResult * 100) / 100 + "% on the final exam" + "<br/>" + "to get " + Math.round(goalGrade * 100) / 100 + "% in this class.")
+     }
+     if (currentGrade <= 0 || goalGrade <= 0 || finalWeight <= 0){
+            $("#finalAnswer").html("All values must be positive!")
+    }
+    if (finalResult > 100){
+        $("#joke").html("Hopefully extra credit is available")
+    } else if(finalResult >= 90){
+        $("#joke").html("What are you doing here? Get back to studying!")
+    } else if (finalResult >= 80){
+        $("#joke").html("There is room for a, take a breather.")
+    }  else if (finalResult >= 70){
+        $("#joke").html("This test should be a breeze.") 
+    } else if (finalResult >= 60){
+        $("#joke").html("Why are your standards so low?")
+    } else if (finalResult >= 0){
+        $("#joke").html("You have to fail to achieve your goals 😂")
+    } else if (finalResult <= 0){
+        $("#joke").html("Sleeping is a viable option at this point")
+    }
+    }
+</script>
+</div>
+<%- include("partials/footer") -%>

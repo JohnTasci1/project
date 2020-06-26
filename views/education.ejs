@@ -1,0 +1,49 @@
+<%- include("partials/header") -%>
+<div id = "mathTopLayer" class = "container-fluid">
+    <h1 class="text-white topLayerText" >Welcome to Education Calculators</h1>
+   <br/>
+    <p  class="text-white topLayerText" >All the education calculators you need</p>
+</div>
+<br/>
+<br/>
+<!-- First Row -->
+<div style = "text-align: center" class ="card-group">
+  <!-- Add hover in the future -->
+    <div onclick="location.href='/gpa-grade-galculator';" class="card">
+        <br/>
+        <img src="images/gpa.png" class="card-img-top mx-auto" alt="calculator">
+      <div class="card-body">
+        <h5 class="card-title">GPA Calculator</h5>
+        <a class="btn btn-primary" href="/gpa-grade-galculator" role="button">GPA Now!</a>
+    </div>
+    </div>
+    <div onclick="location.href='/average-grade-calculator';" class="card">
+      <br/>
+      <img src="images/averageGrade.png" class="card-img-top mx-auto" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Average Grade</h5>
+        <a class="btn btn-primary" href="/average-grade-calculator" role="button">Average Grade!</a>
+      </div>
+    </div>
+    <div onclick="location.href='/gpa-to-letter-calculator';" class="card">
+      <img src="images/aPlus.png" class="card-img-top mx-auto" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">Gpa to Letter</h5>
+        <a class="btn btn-primary" href="/gpa-to-letter-calculator" role="button">Get Letter!</a>
+    </div>
+    </div>
+    </div>
+    <!-- Second Row -->
+    <div style = "text-align: center" class ="card-group">
+      <!-- Add hover in the future -->
+        <div onclick="location.href='/final-grade-calculator';" class="card">
+            <br/>
+            <img src="images/finalGrade.jpg" class="shapes card-img-top mx-auto" alt="calculator">
+          <div class="card-body">
+            <h5 class="card-title">Final Grade Calculator</h5>
+            <a class="btn btn-primary" href="/final-grade-calculator" role="button">Final Grade!</a>
+        </div>
+        </div>
+      </div>
+<br/>
+  <%- include("partials/footer") -%>

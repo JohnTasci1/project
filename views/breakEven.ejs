@@ -1,0 +1,35 @@
+<%- include("partials/header") -%>
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <h1>Units To Sell To Break Even Calculator</h1>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Product Sold Price $" id="productPrice">
+    <input type="number" class="btn-group" placeholder = "Product Cost $" id="productCost">
+    <input type="number" class="btn-group" placeholder = "Total Expenses $" id="totalExpenses">
+    <button class = "btn btn-primary calculate-group" onClick = "breakEven()">Calculate</button>
+    <br/>
+    <p id = "message">Don't include Product Cost in the Total Expense Value</p>
+    <button id = "breakEvenPrice" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+    </div>
+</div>
+<div>
+<script>
+    function breakEven(){
+    var singlePiece = $("#productPrice").val() - $("#productCost").val()
+    var breakEvenUnits =  Math.ceil($("#totalExpenses").val() / ($("#productPrice").val() - $("#productCost").val()))
+    if(!isNaN(breakEvenUnits)){
+        $("#breakEvenPrice").html("You need to sell " + breakEvenUnits + " units to break even")
+        $("#message").html("")
+    } 
+    if ($("#productPrice").val() <= 0 || $("#productCost").val() <= 0 || $("#totalExpenses").val() <= 0){
+        $("#breakEvenPrice").html("All values must be positive")
+    } 
+    if (singlePiece <= 0) {
+        $("#breakEvenPrice").html("Product Price must be greater than Product Cost")
+    }
+}
+</script>
+</div>
+<%- include("partials/footer") -%>

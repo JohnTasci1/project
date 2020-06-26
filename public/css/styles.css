@@ -1,0 +1,171 @@
+/* Home Page */
+#topLayer {
+    height: 400px;
+    width: auto;
+    background-image: url("/images/background.png");
+}
+.topLayerText{
+    text-align: center;
+    position: relative;
+    top: 50px;
+}
+.searchBar{
+    align-items: center;
+    position: relative;
+    top: 100px;
+}
+
+.numberOne{
+    text-align: center;
+    position: relative;
+    top: 35px
+}
+
+.allCards{
+    text-align: center;
+}
+.card-img-top {
+    width: 125px;
+    height: auto;
+    text-align: center;
+}
+/* Tables */
+.table{ 
+    width: 100%;
+}
+.single {
+    width: 25%;
+}
+/* Footer */
+footer {
+    background-color: #0275d8;
+}
+footer a{
+    color: white;
+    text-align: left;
+}
+/* Math Page */
+
+#mathTopLayer {
+    height: 200px;
+    width: auto;
+    background-image: url("/images/background.png");
+}
+.surfaceAreaImage {
+    position: relative;
+    top: 10px;
+}
+/* Calculators */
+.btn-group {
+    background-color: white; /* Green background */
+    border: 1px solid black; /* Green border */
+    color: black; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    width: 40%; /* Set a width if needed */
+    display: block; /* Make the buttons appear below each other */
+  }
+  .calculate-group {
+    border: 1px solid black; /* Green border */
+    color: white; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    width: 40%; /* Set a width if needed */
+    display: block; /* Make the buttons appear below each other */
+  }
+/* Calculator  math.ejs*/
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: Gotham Rounded, sans-serif;
+    font-weight: normal;
+}
+/* centers the calculator */
+.calculator-grid {
+    display: grid;
+    justify-content: center;
+    /* Puts the buttons together */
+    align-content: center;
+    min-height: 100vh;
+    /* Makes 4 columns with 4 items in each  */
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(120px, auto)repeat(5, 100px);
+}
+/* Targets the buttons in the calculator */
+.calculator-grid > button {
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid default;
+    outline: none;
+    /* Changes the background of buttons */
+}
+/* If mouse is over buttons */
+.calculator-grid > button:hover {
+    background-color:colora(100,100,234,.5);
+}
+/* Makes it 2x bigger */
+.span-two {
+    grid-column: span 2;
+}
+/* Makes it take the entire space and seperates buttons from number line */
+.output {
+    grid-column: 1 / -1;
+    background-color:rgba(0,0,0,.75);
+    /* Makes the two number values vertically aligned */
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    flex-direction: column;
+    padding: 10px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+/* Changes the styling of the most top number */
+.output .previous-operand {
+    color:rgba(255,255,255,.75);
+    font-size: 1.5rem;
+}
+/* Changes the styling of the number under the most top one */
+.output .current-operand {
+    color:white;
+    font-size: 2rem;
+}
+.calculatorText {
+    text-align: center;
+}
+/* Shape images */
+.shapes {
+    width: 200px; 
+    height: auto;
+}
+  /* Changes the width to 50% when its less than 767 for the buttons */
+  @media (max-width: 767px) {
+    thead {
+        font-size: small;
+      } 
+    .btn-group {
+        width:50%;
+    }
+    .calculate-group {
+        width:50%;
+    }
+    .shapes {
+        width: 150px;
+        height: auto;
+    }
+    .single { 
+        width: 50%
+    }
+}
+@media (max-width: 575px) {
+    .btn-group {
+        width: 60%;
+    }
+    .calculate-group {
+        width: 60%;
+    }
+    .searchButton {
+        width:50%;
+        margin-left:25%;
+        margin-right:25%;
+    }
+}

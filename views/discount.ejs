@@ -1,0 +1,109 @@
+<%- include("partials/header") -%>
+<!-- List Price -->
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <h1>Discount Calculator</h1>
+    <br/>
+    <h4>List Price</h4>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "Discount %" id="listPercent">
+    <input type="number" class="btn-group" placeholder = "Sale Price $" id="listPrice">
+    
+    <button class = "btn btn-primary calculate-group" onClick = "listPrice()">Calculate</button>
+    <br/>
+    <button id = "listPriceTotal" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+    </div>
+</div>
+<!-- Discount Price -->
+<div style = "padding: 3%">
+    <div>
+    <center>
+    <br/>
+    <h4>Discount Price</h4>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "List Price $" id="discountSalePrice">
+    <input type="number" class="btn-group" placeholder = "Sale Price $" id="salePrice">
+    
+    <button class = "btn btn-primary calculate-group" onClick = "discountPrice()">Calculate</button>
+    <br/>
+    <button id = "discountPriceTotal" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+    </div>
+</div>
+<!-- Sale Price -->
+<div class ="w-auto">
+    <div>
+    <center>
+    <br/>
+    <h4>Sale Price</h4>
+    <br/>
+    <input type="number" class="btn-group" placeholder = "List Price $" id="saleListPrice">
+    <input type="number" class="btn-group" placeholder = "Discount %" id="salePriceDiscount">
+    
+    <button class = "btn btn-primary calculate-group" onClick = "salePrice1()">Calculate</button>
+    <br/>
+    <button id = "salePriceTotal" type = "button" class = "btn btn-light border border-dark"> Answer </button>
+    </center>
+    </div>
+</div>
+
+
+<div>
+<script>
+function listPrice(){
+    var listTotal = $("#listPrice").val() / (1 - $("#listPercent").val() / 100)
+    var discountAmount = listTotal - $("#listPrice").val()
+    if(!isNaN(listTotal, discountAmount)){
+        $("#listPriceTotal").html("List Price: $" + Math.round(listTotal * 100) /100 + "<br/> Discount Amount: $" + Math.round(discountAmount * 100) /100)
+    }
+    if (listPercent >= 100 || listPercent <= 0){
+        $("#listPriceTotal").html("Discount must be between 0-100 %")
+    } else if(listPrice <= 0 || listPrice <= 0){
+        $("#listPriceTotal").html("All values must be positive")
+    } else {
+        $("#listPriceTotal").html("List Price is $" + Math.round(listTotal * 100) /100 + "<br/> Discount Amount is $" + Math.round(discountAmount * 100) /100)
+    }
+}
+// Discount Price
+function discountPrice(){
+    var discountSalePrice = $("#discountSalePrice").val()
+    var salePrice = $("#salePrice").val()
+
+    var discountTotal = (discountSalePrice - salePrice) / discountSalePrice * 100
+    var discountAmount2 = discountSalePrice - salePrice
+
+    if(!isNaN(discountTotal, discountAmount2)){
+        $("#discountPriceTotal").html("Discount Percent: " + Math.round(discountTotal * 100) /100 + "%" + "<br/>Discount Amount: $" + Math.round(discountAmount2 * 100)/100)
+    }
+    if(discountAmount2 < 0){
+        $("#discountPriceTotal").html("Sale Price can't be greater than List Price")
+    } else if(discountSalePrice <= 0 || salePrice <= 0){
+        $("#discountPriceTotal").html("All values must be positive")
+    } else {
+        $("#discountPriceTotal").html("Discount Percent: " + Math.round(discountTotal * 100) /100 + "%" + "<br/>Discount Amount: $" + Math.round(discountAmount2 * 100)/100)
+    }
+}
+// Sale Price
+function salePrice1(){
+    var saleListPrice = $("#saleListPrice").val()
+    var salePriceDiscount = $("#salePriceDiscount").val()
+
+    var sale1 = saleListPrice - (salePriceDiscount / 100 * saleListPrice)
+    var sale2 = saleListPrice - sale1
+
+    if(!isNaN(sale1, sale2)){
+        $("#salePriceTotal").html("Sale Price: $" + Math.round(sale1 * 100) / 100 + "<br/>Discount Amount: $" + Math.round(sale2 * 100) / 100)
+    }
+    if (salePriceDiscount >= 100 || salePriceDiscount <= 0){
+        $("#salePriceTotal").html("Discount must be between 0-100 %")
+    } else if(saleListPrice <= 0 || salePriceDiscount <= 0) {
+        $("#salePriceTotal").html("Discount must be between 0-100 %")
+    } else {
+        $("#salePriceTotal").html("Sale Price: $" + Math.round(sale1 * 100) / 100 + "<br/>Discount Amount: $" + Math.round(sale2 * 100) / 100)
+    }
+}
+</script>
+</div>
+<%- include("partials/footer") -%>
